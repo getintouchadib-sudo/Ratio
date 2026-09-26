@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengembaraan Nisbah: Misteri Kota Nisbah (Tahun 6)</title>
+  <title>Ratio Quest: The Mystery of Number City (Year 6)</title>
   <style>
     /* CSS RESET & VARIABLES */
     :root {
@@ -693,19 +693,6 @@
       padding: 0 20px;
     }
 
-    /* TOGGLE PAIR MODE & CITIZENSHIP BADGES */
-    .pair-toggle-box {
-      background: #e0e7ff;
-      border: 2px solid #818cf8;
-      border-radius: 14px;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      width: 100%;
-    }
-
     /* RESPONSIVE DESIGN ADJUSTMENTS */
     @media (max-width: 640px) {
       .hero-title { font-size: 1.6rem; }
@@ -725,27 +712,27 @@
     <header>
       <div class="brand">
         <span class="brand-icon">🏰</span>
-        <span class="brand-title">Kota Nisbah</span>
+        <span class="brand-title">Number City</span>
       </div>
 
       <div class="stats-bar" id="stats-bar" style="display: none;">
-        <div class="stat-item" title="Bintang Terkumpul">
+        <div class="stat-item" title="Stars Collected">
           <span>⭐</span> <span id="stat-stars">0</span>
         </div>
-        <div class="stat-item" title="Syiling Nisbah">
+        <div class="stat-item" title="Coins">
           <span>🪙</span> <span id="stat-coins">0</span>
         </div>
-        <div class="stat-item" title="Nyawa">
-          <span>❤️</span> <span id="stat-lives">3</span>
+        <div class="stat-item" title="Lives">
+          <span id="stat-lives">❤️❤️❤️</span>
         </div>
-        <div class="stat-item" title="Mod">
-          <span id="stat-mode-badge" style="background:#4338ca; padding:2px 8px; border-radius:10px; font-size:0.8rem;">Solo</span>
+        <div class="stat-item" title="Mode">
+          <span id="stat-mode-badge" style="background:#4338ca; padding:2px 8px; border-radius:10px; font-size:0.8rem;">Solo Explorer</span>
         </div>
       </div>
 
       <div class="controls-bar">
-        <button class="btn-icon" id="btn-sound-toggle" title="Bunyi (Buka/Tutup)">🔊</button>
-        <button class="btn-icon" id="btn-info" title="Maklumat & AI Acknowledgement">ℹ️</button>
+        <button class="btn-icon" id="btn-sound-toggle" title="Sound (On/Off)">🔊</button>
+        <button class="btn-icon" id="btn-info" title="Info & AI Acknowledgement">ℹ️</button>
       </div>
     </header>
 
@@ -754,46 +741,41 @@
       <div style="text-align: center; margin-bottom: 15px;">
         <span style="font-size: 4rem;">🧭</span>
       </div>
-      <h1 class="hero-title">Pengembaraan Nisbah: Misteri Kota Nisbah</h1>
+      <h1 class="hero-title">RATIO QUEST: THE MYSTERY OF NUMBER CITY</h1>
       <p class="hero-subtitle">
-        Selamat datang, Pengembara Muda! Kota Nisbah berada dalam bahaya kehilangan keseimbangan.
-        Selesaikan cabaran nisbah dua kuantiti dalam bentuk termudah untuk membuka pintu istana dan merangkul gelaran <strong>Master Nisbah</strong>!
+        Welcome, Ratio Explorer! Number City needs your mathematical help to restore balance.
+        Solve 5 stages of ratio challenges to unlock the castle doors and earn the title of <strong>Ratio Master</strong>!
       </p>
 
       <div class="input-group">
-        <label for="player-nickname">Nama / Gelaran Pengembara:</label>
-        <input type="text" id="player-nickname" class="input-field" placeholder="Contoh: Amir / Sarah" maxlength="15" value="Pengembara">
-      </div>
-
-      <div class="pair-toggle-box" style="max-width: 320px;">
-        <span style="font-weight: bold; color: #3730a3; font-size:0.95rem;">👥 Mod Berpasangan (2 Murid)</span>
-        <input type="checkbox" id="pair-mode-checkbox" style="width: 20px; height: 20px; cursor: pointer;">
+        <label for="player-nickname">Explorer Nickname:</label>
+        <input type="text" id="player-nickname" class="input-field" placeholder="e.g. Alex / Sarah" maxlength="15" value="Explorer">
       </div>
 
       <div class="start-menu-btns">
         <button class="btn btn-primary btn-large" id="btn-start-game">
-          🚀 Mula Pengembaraan
+          🚀 START ADVENTURE
         </button>
         <button class="btn btn-outline" id="btn-how-to-play">
-          ❓ Cara Bermain
+          ❓ How To Play
         </button>
         <button class="btn btn-outline" id="btn-objectives">
-          🎯 Objektif Pembelajaran (DSKP)
+          🎯 Learning Objectives (DSKP)
         </button>
       </div>
     </div>
 
     <!-- 2. LEARNING / DISCOVERY SCREEN -->
     <div id="screen-learn" class="screen">
-      <h2 style="color: #312e81; margin-bottom: 12px; text-align: center;">💡 Bengkel Penemuan Nisbah</h2>
+      <h2 style="color: #312e81; margin-bottom: 12px; text-align: center;">💡 Ratio Discovery Workshop</h2>
       <div class="discovery-card">
         <p style="font-size: 1.1rem; text-align: center; color: #334155;">
-          Mari kita fahami bagaimana nisbah dipermudahkan secara visual!
+          Let's visually understand how ratios are simplified!
         </p>
 
         <div class="grouping-visual" id="discovery-visual-container">
           <div class="group-box">
-            <span class="group-label">🔴 Bola Merah: 6</span>
+            <span class="group-label">🔴 Red Balls: 6</span>
             <div class="group-clusters" id="red-clusters">
               <div class="cluster">🔴🔴</div>
               <div class="cluster">🔴🔴</div>
@@ -804,7 +786,7 @@
           <div style="font-size: 2rem; font-weight: bold; color: #6366f1;">:</div>
 
           <div class="group-box">
-            <span class="group-label">🔵 Bola Biru: 9</span>
+            <span class="group-label">🔵 Blue Balls: 9</span>
             <div class="group-clusters" id="blue-clusters">
               <div class="cluster">🔵🔵🔵</div>
               <div class="cluster">🔵🔵🔵</div>
@@ -815,27 +797,27 @@
 
         <div style="background: #e0e7ff; padding: 16px; border-radius: 14px; text-align: center; border: 2px solid #818cf8;">
           <p style="font-size: 1.2rem; font-weight: bold; color: #1e1b4b; margin-bottom: 8px;">
-            Nisbah Asal: <span style="color: #ef4444;">6</span> : <span style="color: #2563eb;">9</span>
+            Original Ratio: <span style="color: #ef4444;">6</span> : <span style="color: #2563eb;">9</span>
           </p>
           <p style="font-size: 1rem; color: #334155; margin-bottom: 10px;">
-            Kedua-dua nombor <strong>6</strong> dan <strong>9</strong> boleh dibahagi dengan <strong>3</strong>!
+            Both numbers <strong>6</strong> and <strong>9</strong> can be divided by <strong>3</strong>!
           </p>
           <div style="display: flex; justify-content: center; gap: 20px; font-weight: bold; font-size: 1.1rem; color: #047857;">
             <div>6 ÷ 3 = 2</div>
             <div>9 ÷ 3 = 3</div>
           </div>
           <p style="font-size: 1.3rem; font-weight: bold; color: #059669; margin-top: 10px;">
-            Nisbah Termudah: 2 : 3
+            Simplest Form: 2 : 3
           </p>
         </div>
 
         <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 14px; border-radius: 12px; font-size: 0.95rem; color: #78350f;">
-          🌟 <strong>Konsep Penting:</strong> "Nisbah termudah ialah nisbah yang tidak boleh dipermudahkan lagi dengan nombor bulat yang sama selain 1. Bilangan objek berubah mengikut kumpulan, tetapi <em>hubungan antara dua kuantiti tetap sama!</em>"
+          🌟 <strong>Key Concept:</strong> "The numbers become smaller, but the relationship between the two quantities stays exactly the same!"
         </div>
 
         <div style="display: flex; justify-content: space-between; gap: 10px;">
-          <button class="btn btn-outline" id="btn-custom-ratio-tool">🎨 Cuba Nisbah Ciptaan Saya</button>
-          <button class="btn btn-primary" id="btn-proceed-to-map">🗺️ Pergi Ke Peta Kota Nisbah</button>
+          <button class="btn btn-outline" id="btn-custom-ratio-tool">🎨 Create My Own Ratio</button>
+          <button class="btn btn-primary" id="btn-proceed-to-map">🗺️ Go To Map</button>
         </div>
       </div>
     </div>
@@ -843,66 +825,66 @@
     <!-- 3. GAME MAP SCREEN -->
     <div id="screen-map" class="screen">
       <div class="map-container">
-        <h2 class="map-title">🗺️ Peta Pengembaraan Kota Nisbah</h2>
+        <h2 class="map-title">🗺️ Number City Quest Map</h2>
         <p style="text-align: center; color: #0284c7; margin-bottom: 16px; font-weight: 500;">
-          Pilih kawasan yang terbuka untuk memulakan cabaran!
+          Select an unlocked stage to start your challenge!
         </p>
 
         <div class="map-grid">
-          <!-- Area 1 -->
+          <!-- Stage 1 -->
           <div class="map-node unlocked active-current" id="map-node-1" onclick="game.startArea(1)">
             <div class="node-number">1</div>
             <div class="node-details">
-              <div class="node-title">Desa Nisbah</div>
-              <div class="node-desc">Mewakilkan nisbah asas secara visual & gambar.</div>
+              <div class="node-title">STAGE 1 – RATIO VILLAGE</div>
+              <div class="node-desc">Recognising and representing visual ratios.</div>
             </div>
             <div class="node-badge" id="badge-area-1">⭐</div>
           </div>
 
-          <!-- Area 2 -->
+          <!-- Stage 2 -->
           <div class="map-node locked" id="map-node-2" onclick="game.startArea(2)">
             <div class="node-number">2</div>
             <div class="node-details">
-              <div class="node-title">Hutan Pemudahan</div>
-              <div class="node-desc">Langkah demi langkah memilih pembahagi sepunya.</div>
+              <div class="node-title">STAGE 2 – SIMPLIFY FOREST</div>
+              <div class="node-desc">Simplifying ratios using common divisors.</div>
             </div>
             <div class="node-badge" id="badge-area-2">🔒</div>
           </div>
 
-          <!-- Area 3 -->
+          <!-- Stage 3 -->
           <div class="map-node locked" id="map-node-3" onclick="game.startArea(3)">
             <div class="node-number">3</div>
             <div class="node-details">
-              <div class="node-title">Bandar Nombor</div>
-              <div class="node-desc">Cari nombor tersembunyi & nilai nisbah setara.</div>
+              <div class="node-title">STAGE 3 – NUMBER CITY</div>
+              <div class="node-desc">Real-life ratio situations and objects.</div>
             </div>
             <div class="node-badge" id="badge-area-3">🔒</div>
           </div>
 
-          <!-- Area 4 -->
+          <!-- Stage 4 -->
           <div class="map-node locked" id="map-node-4" onclick="game.startArea(4)">
             <div class="node-number">4</div>
             <div class="node-details">
-              <div class="node-title">Menara Nisbah</div>
-              <div class="node-desc">Misi situasi kehidupan sebenar & harian.</div>
+              <div class="node-title">STAGE 4 – RATIO TOWER</div>
+              <div class="node-desc">Reasoning, error analysis & missing values.</div>
             </div>
             <div class="node-badge" id="badge-area-4">🔒</div>
           </div>
 
-          <!-- Area 5 -->
+          <!-- Stage 5 -->
           <div class="map-node locked" id="map-node-5" onclick="game.startArea(5)">
             <div class="node-number">5</div>
             <div class="node-details">
-              <div class="node-title">Kastil Master Nisbah</div>
-              <div class="node-desc">Cabaran akhir: Peniupan minda & analisis kesilapan.</div>
+              <div class="node-title">STAGE 5 – RATIO CASTLE</div>
+              <div class="node-desc">Final Boss Challenge: Earn the Ratio Master Title!</div>
             </div>
             <div class="node-badge" id="badge-area-5">🏆</div>
           </div>
         </div>
 
         <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-          <button class="btn btn-outline" id="btn-back-to-learn">💡 Bengkel Penemuan</button>
-          <button class="btn btn-accent" id="btn-view-report-direct">📊 Laporan Pencapaian</button>
+          <button class="btn btn-outline" id="btn-back-to-learn">💡 Discovery Workshop</button>
+          <button class="btn btn-accent" id="btn-view-report-direct">📊 Performance Report</button>
         </div>
       </div>
     </div>
@@ -911,12 +893,12 @@
     <div id="screen-gameplay" class="screen">
       <div class="game-card">
         <div class="question-header">
-          <span class="level-badge" id="game-level-title">Kawasan 1: Desa Nisbah</span>
-          <span style="font-weight: bold; color: #64748b;" id="game-question-tracker">Soalan 1 / 5</span>
+          <span class="level-badge" id="game-level-title">STAGE 1: Ratio Village</span>
+          <span style="font-weight: bold; color: #64748b;" id="game-question-tracker">Question 1 / 5</span>
         </div>
 
         <div class="question-text" id="game-question-text">
-          Apakah nisbah epal kepada oren?
+          What is the ratio of apples to oranges?
         </div>
 
         <!-- VISUAL OBJECT DISPLAY BOX -->
@@ -924,10 +906,10 @@
           <!-- Rendered dynamically -->
         </div>
 
-        <!-- INTERACTIVE STEP-BY-STEP DIVISOR CONTAINER (For Level 2 / Step simplification) -->
+        <!-- INTERACTIVE STEP-BY-STEP DIVISOR CONTAINER (For Stage 2) -->
         <div class="divisor-container" id="divisor-container" style="display: none;">
           <p style="font-weight: bold; color: #1e3a8a; font-size: 0.95rem;">
-            Pilih Nombor Pembahagi Sepunya Untuk Membahagikan Kedua-dua Kuantiti:
+            Select a common divisor to divide both quantities step-by-step:
           </p>
           <div class="ratio-display-big" id="interactive-ratio-display">12 : 18</div>
           <div class="divisor-buttons" id="divisor-buttons-list">
@@ -942,44 +924,59 @@
 
         <!-- FEEDBACK BOX -->
         <div class="feedback-box" id="game-feedback-box">
-          <div id="feedback-content">Betul! Jawapan kamu tepat sekali.</div>
+          <div id="feedback-content">Correct! Great job!</div>
         </div>
 
         <!-- BOTTOM ACTION BUTTONS -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-          <button class="btn btn-outline" id="btn-hint" style="padding: 8px 16px; font-size: 0.95rem;">💡 Petunjuk</button>
-          <button class="btn btn-primary" id="btn-next-question" style="display: none;">Seterusnya ➡️</button>
+          <button class="btn btn-outline" id="btn-hint" style="display: none; padding: 8px 16px; font-size: 0.95rem;">💡 SHOW HINT</button>
+          <button class="btn btn-primary" id="btn-next-question" style="display: none;">NEXT QUESTION ➡️</button>
         </div>
       </div>
     </div>
 
-    <!-- 5. SUMMARY & REPORT SCREEN -->
+    <!-- 5. GAME OVER MODAL -->
+    <div class="modal-overlay" id="modal-game-over">
+      <div class="modal-card" style="text-align: center; max-width: 450px;">
+        <div style="font-size: 4rem; margin-bottom: 10px;">💥</div>
+        <h2 style="color: #ef4444; font-size: 2rem; margin-bottom: 10px;">GAME OVER!</h2>
+        <p style="color: #475569; font-size: 1.1rem; margin-bottom: 20px;">
+          You ran out of lives (0 ❤️). Don't worry! Every mistake is a chance to learn.
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center;">
+          <button class="btn btn-primary btn-large" id="btn-retry-stage">🔄 RETRY STAGE</button>
+          <button class="btn btn-outline" onclick="game.showScreen('screen-map'); game.closeModals();">🗺️ RETURN TO MAP</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. SUMMARY & REPORT SCREEN -->
     <div id="screen-report" class="screen">
       <div class="game-card" style="max-width: 750px;">
-        <h2 style="text-align: center; color: #312e81; font-size: 1.8rem;">🎉 Laporan Prestasi Pengembara</h2>
+        <h2 style="text-align: center; color: #312e81; font-size: 1.8rem;">🎉 Explorer Performance Report</h2>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 10px;">
           <div style="background: #f0fdf4; border: 2px solid #86efac; padding: 12px; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.85rem; color: #166534;">Nama Pengembara</div>
-            <div style="font-size: 1.2rem; font-weight: bold; color: #14532d;" id="report-player-name">Pengembara</div>
+            <div style="font-size: 0.85rem; color: #166534;">Explorer Name</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #14532d;" id="report-player-name">Explorer</div>
           </div>
           <div style="background: #f0f9ff; border: 2px solid #7dd3fc; padding: 12px; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.85rem; color: #075985;">Jumlah Bintang</div>
+            <div style="font-size: 0.85rem; color: #075985;">Total Stars</div>
             <div style="font-size: 1.2rem; font-weight: bold; color: #0369a1;" id="report-stars">0 ⭐</div>
           </div>
           <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 12px; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.85rem; color: #92400e;">Skor Ketepatan</div>
+            <div style="font-size: 0.85rem; color: #92400e;">Accuracy Score</div>
             <div style="font-size: 1.2rem; font-weight: bold; color: #b45309;" id="report-accuracy">0%</div>
           </div>
           <div style="background: #faf5ff; border: 2px solid #d8b4fe; padding: 12px; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.85rem; color: #6b21a8;">Lencana Diraih</div>
-            <div style="font-size: 1.2rem; font-weight: bold; color: #581c87;" id="report-badge-count">0 / 4</div>
+            <div style="font-size: 0.85rem; color: #6b21a8;">Badges Earned</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #581c87;" id="report-badge-count">0 / 5</div>
           </div>
         </div>
 
         <!-- BADGES EARNED SECTION -->
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 14px;">
-          <h4 style="color: #334155; margin-bottom: 10px;">🏅 Lencana Pencapaian Kamu:</h4>
+          <h4 style="color: #334155; margin-bottom: 10px;">🏅 Your Earned Badges:</h4>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;" id="badges-container">
             <!-- Badges rendered dynamically -->
           </div>
@@ -987,9 +984,9 @@
 
         <!-- TEACHER SUMMARY BREAKDOWN -->
         <div style="background: #eef2ff; border: 2px solid #c7d2fe; padding: 16px; border-radius: 14px;">
-          <h4 style="color: #3730a3; margin-bottom: 8px;">👨‍🏫 Ringkasan Untuk Guru / Ibu Bapa:</h4>
+          <h4 style="color: #3730a3; margin-bottom: 8px;">👨‍🏫 Teacher / Parent Summary:</h4>
           <p style="font-size: 0.95rem; color: #334155; line-height: 1.5;" id="teacher-summary-text">
-            Murid telah menunjukkan pemahaman asas dalam mewakilkan nisbah dua kuantiti.
+            Pupil has demonstrated fundamental understanding in representing ratios of two quantities.
           </p>
           <div id="difficult-questions-list" style="margin-top: 8px; font-size: 0.9rem; color: #991b1b;"></div>
         </div>
@@ -998,20 +995,20 @@
         <div id="certificate-wrapper" style="display: none;">
           <div class="certificate-card">
             <div style="font-size: 2.5rem;">📜</div>
-            <div class="cert-title">SIJIL MASTER NISBAH</div>
-            <p>Dengan ini diperakukan bahawa</p>
-            <div class="cert-name" id="cert-player-name">Pengembara</div>
-            <p>Telah berjaya menguasai Kemahiran DSKP 7.2.1: <strong>Mewakilkan Nisbah Dua Kuantiti Dalam Bentuk Termudah</strong> dengan cemerlang di Kota Nisbah!</p>
+            <div class="cert-title">RATIO MASTER CERTIFICATE</div>
+            <p>This certifies that</p>
+            <div class="cert-name" id="cert-player-name">Explorer</div>
+            <p>has successfully mastered DSKP Learning Standard 7.2.1: <strong>Representing the ratio of two quantities in its simplest form</strong> with excellence in Number City!</p>
             <div style="margin-top: 15px; font-size: 0.85rem; color: #78350f;">
-              Tarikh: <span id="cert-date"></span> | Anugerah: Kota Nisbah Year 6 Math Explorer
+              Date: <span id="cert-date"></span> | Awarded by: Number City Ratio Quest
             </div>
           </div>
         </div>
 
         <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-          <button class="btn btn-primary" id="btn-report-continue">🗺️ Kembali Ke Peta</button>
-          <button class="btn btn-accent" onclick="window.print()">🖨️ Cetak Sijil / Laporan</button>
-          <button class="btn btn-outline" id="btn-restart-game">🔄 Mula Semula Game</button>
+          <button class="btn btn-primary" id="btn-report-continue">🗺️ Return To Map</button>
+          <button class="btn btn-accent" onclick="window.print()">🖨️ Print Report / Certificate</button>
+          <button class="btn btn-outline" id="btn-restart-game">🔄 Restart Quest</button>
         </div>
       </div>
     </div>
@@ -1022,18 +1019,19 @@
   <div class="modal-overlay" id="modal-how-to-play">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">📖 Cara Bermain</h3>
+        <h3 class="modal-title">📖 How To Play</h3>
         <button class="close-modal" onclick="game.closeModals()">&times;</button>
       </div>
       <div style="line-height: 1.6; color: #334155;">
         <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
-          <li><strong>Mula Pengembaraan:</strong> Masukkan nama kamu dan pilih kawasan pada peta Kota Nisbah.</li>
-          <li><strong>Kawasan 1 (Desa Nisbah):</strong> Kenal pasti nisbah dua kuantiti daripada gambar objek.</li>
-          <li><strong>Kawasan 2 (Hutan Pemudahan):</strong> Pilih nombor pembahagi sepunya untuk membahagikan kuantiti langkah demi langkah.</li>
-          <li><strong>Kawasan 3 (Bandar Nombor):</strong> Cari nombor tersembunyi yang hilang pada nisbah setara.</li>
-          <li><strong>Kawasan 4 (Menara Nisbah):</strong> Selesaikan misi situasi harian di sekolah dan rumah.</li>
-          <li><strong>Kawasan 5 (Kastil Master Nisbah):</strong> Cabaran akhir termasuk soalan penaakulan dan analisis kesilapan.</li>
-          <li><strong>Ganjaran:</strong> Kumpul bintang ⭐, syiling 🪙, dan raih lencana 🏆 Master Nisbah!</li>
+          <li><strong>Start Quest:</strong> Enter your nickname and select a stage on the quest map.</li>
+          <li><strong>Stage 1 (Ratio Village):</strong> Identify ratios of two quantities from pictures.</li>
+          <li><strong>Stage 2 (Simplify Forest):</strong> Choose common divisors to simplify ratios step by step.</li>
+          <li><strong>Stage 3 (Number City):</strong> Solve real-world ratio situations from school and home.</li>
+          <li><strong>Stage 4 (Ratio Tower):</strong> Identify missing values and analyze reasoning errors.</li>
+          <li><strong>Stage 5 (Ratio Castle):</strong> Final challenge to unlock the castle treasure and become a 🏆 <strong>Ratio Master</strong>!</li>
+          <li><strong>Life System:</strong> You have 3 hearts ❤️❤️❤️ per stage. <em>1 wrong answer = -1 heart</em>.</li>
+          <li><strong>Hints:</strong> The 💡 SHOW HINT button appears only after an incorrect attempt.</li>
         </ol>
       </div>
     </div>
@@ -1043,88 +1041,75 @@
   <div class="modal-overlay" id="modal-objectives">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">🎯 Objektif & DSKP Matematik</h3>
+        <h3 class="modal-title">🎯 Learning Objectives (DSKP)</h3>
         <button class="close-modal" onclick="game.closeModals()">&times;</button>
       </div>
       <div style="line-height: 1.6; color: #334155; font-size: 0.95rem;">
-        <p><strong>Subjek:</strong> Matematik Sekolah Rendah (KSSR Semakan)</p>
-        <p><strong>Tahun:</strong> Tahun 6</p>
-        <p><strong>Tajuk:</strong> 7.2 Nisbah</p>
-        <p><strong>Standard Pembelajaran:</strong> 7.2.1 Mewakilkan nisbah dua kuantiti dalam bentuk termudah.</p>
-        <p><strong>Catatan DSKP:</strong> Nisbah hanya melibatkan nombor bulat.</p>
+        <p><strong>Subject:</strong> Mathematics Primary School (KSSR Semakan)</p>
+        <p><strong>Year:</strong> Year 6</p>
+        <p><strong>Topic:</strong> 7.2 Ratio</p>
+        <p><strong>Learning Standard:</strong> 7.2.1 Representing the ratio of two quantities in the simplest form.</p>
+        <p><strong>DSKP Note:</strong> Ratio only involves whole numbers.</p>
         <hr style="margin: 12px 0; border: none; border-top: 1px solid #e2e8f0;">
-        <h4 style="color: #312e81; margin-bottom: 6px;">💡 Pendekatan Pedagogi:</h4>
+        <h4 style="color: #312e81; margin-bottom: 6px;">💡 Pedagogical Design:</h4>
         <p>
-          Permainan ini direka berasaskan pemahaman relasional (relational understanding). Murid belajar <em>MENGAPA</em> nisbah boleh dipermudahkan melalui pengelompokan visual dan pembahagi sepunya, bukan sekadar menghafal langkah kerja.
+          This digital resource is engineered for relational understanding. Pupils visually experience <em>WHY</em> ratios can be simplified through grouping transformations and common divisors rather than merely memorizing rules.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 3: INFO, TASK 2 ALIGNMENT, NPDL 6CS & AI ACKNOWLEDGEMENT -->
+  <!-- MODAL 3: INFO, TASK 2 ALIGNMENT & AI ACKNOWLEDGEMENT -->
   <div class="modal-overlay" id="modal-info">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">ℹ️ Maklumat Sumber & Pengiktirafan AI</h3>
+        <h3 class="modal-title">ℹ️ Resource Info & AI Acknowledgement</h3>
         <button class="close-modal" onclick="game.closeModals()">&times;</button>
       </div>
       <div style="line-height: 1.6; color: #334155; font-size: 0.9rem;">
-        <h4 style="color: #312e81; margin-bottom: 4px;">📌 Pengenalan Sumber Digital</h4>
+        <h4 style="color: #312e81; margin-bottom: 4px;">📌 Digital Learning Resource</h4>
         <p style="margin-bottom: 10px;">
-          "Pengembaraan Nisbah: Misteri Kota Nisbah" ialah aplikasi permainan interaktif yang dibina khas untuk murid Tahun 6 di Malaysia bagi menguasai tajuk Nisbah dalam bentuk termudah.
+          "RATIO QUEST: THE MYSTERY OF NUMBER CITY" is a self-contained offline interactive educational game developed for Year 6 primary school pupils.
         </p>
 
-        <h4 style="color: #312e81; margin-bottom: 4px;">🌟 Integrasi NPDL / 6C:</h4>
-        <ul style="padding-left: 20px; margin-bottom: 10px;">
-          <li><strong>Communication:</strong> Murid membaca situasi matematik dan memilih penerangan jawapan yang tepat.</li>
-          <li><strong>Critical Thinking:</strong> Murid menganalisis soalan penaakulan dan memilih pembahagi sepunya yang betul.</li>
-          <li><strong>Collaboration:</strong> Ciri 'Mod Berpasangan' membolehkan dua murid berdiskus bersama sebelum menjawab.</li>
-          <li><strong>Creativity:</strong> Alat visual interaktif membimbing murid mereka bentuk nisbah sendiri.</li>
-          <li><strong>Character:</strong> Sistem ganjaran positif membina ketabahan (perseverance) tanpa penalti yang mengecewakan.</li>
-          <li><strong>Citizenship:</strong> Membudayakan penggunaan teknologi digital secara beretika dan bertanggungjawab.</li>
-        </ul>
-
-        <h4 style="color: #312e81; margin-bottom: 4px;">🤖 Pengiktirafan Penggunaan Alat AI (AI Acknowledgement)</h4>
+        <h4 style="color: #312e81; margin-bottom: 4px;">🤖 AI & Credits Acknowledgement</h4>
         <p style="margin-bottom: 6px;">
-          Bagi tujuan pematuhan integriti akademik dan ketulenan tugasan:
+          In compliance with academic integrity requirements:
         </p>
         <ul style="padding-left: 20px; margin-bottom: 10px; background: #f8fafc; padding: 10px 20px; border-radius: 8px;">
-          <li><strong>Reka Bentuk Permainan & Pedagogi:</strong> Dibina berpandukan DSKP Matematik Tahun 6 KPM.</li>
-          <li><strong>Generasi Kod & Pembantu Pembangunan:</strong> AI (Anthropic Claude / Jules AI) digunakan untuk membantu penjanaan struktur awal HTML/CSS/JS, penyesuaian sintaks Web Audio API synth, dan penyusunan soalan bank matematik.</li>
-          <li><strong>Ketulenan & Bebas Hak Cipta:</strong> Tiada grafik bertanda hak cipta digunakan; semua elemen visual menggunakan CSS, emojicon percuma, dan Web Audio API teras.</li>
+          <li><strong>Pedagogy & Curriculum:</strong> Strictly aligned with KPM DSKP Year 6 Mathematics 7.2.1.</li>
+          <li><strong>Coding & AI Assistance:</strong> Developed with AI assistant (Claude / Jules AI) for HTML5 structure, CSS styling, Web Audio API synthesizer, and JavaScript Fisher-Yates shuffle algorithms.</li>
+          <li><strong>Originality & Assets:</strong> 100% original graphics using pure CSS, standard emojis, and Web Audio API tone synthesis. No copyrighted commercial assets or characters used.</li>
         </ul>
-
-        <h4 style="color: #312e81; margin-bottom: 4px;">📜 Rujukan & Hak Cipta</h4>
-        <p>Kementerian Pendidikan Malaysia (KPM) - Dokumen Standard Kurikulum dan Pentaksiran (DSKP) Matematik Tahun 6.</p>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 4: CUSTOM RATIO TOOL (CREATIVITY / EXPLORATION) -->
+  <!-- MODAL 4: CUSTOM RATIO TOOL -->
   <div class="modal-overlay" id="modal-custom-tool">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">🎨 Alat Visual Nisbah Ciptaan Saya</h3>
+        <h3 class="modal-title">🎨 Create My Own Ratio Visualizer</h3>
         <button class="close-modal" onclick="game.closeModals()">&times;</button>
       </div>
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <p style="text-align: center; color: #475569;">
-          Pilih bilangan objek untuk membina nisbah kamu sendiri dan lihat bagaimana ia dipermudahkan!
+          Enter quantity values to build your own ratio and watch it simplify!
         </p>
 
         <div style="display: flex; justify-content: space-around; align-items: center; background: #f1f5f9; padding: 16px; border-radius: 14px;">
           <div style="text-align: center;">
-            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Epal 🍎</label>
+            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Apples 🍎</label>
             <input type="number" id="custom-num-1" min="1" max="24" value="8" style="width: 70px; padding: 8px; font-size: 1.1rem; text-align: center; border-radius: 8px; border: 2px solid #cbd5e1;">
           </div>
           <div style="font-size: 2rem; font-weight: bold; color: #6366f1;">:</div>
           <div style="text-align: center;">
-            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Oren 🍊</label>
+            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Oranges 🍊</label>
             <input type="number" id="custom-num-2" min="1" max="24" value="12" style="width: 70px; padding: 8px; font-size: 1.1rem; text-align: center; border-radius: 8px; border: 2px solid #cbd5e1;">
           </div>
         </div>
 
-        <button class="btn btn-primary" onclick="game.calculateCustomRatio()">✨ Permudahkan Nisbah Ini</button>
+        <button class="btn btn-primary" onclick="game.calculateCustomRatio()">✨ Simplify This Ratio</button>
 
         <div id="custom-ratio-result" style="display: none; background: #e0f2fe; border: 2px solid #38bdf8; padding: 16px; border-radius: 14px; text-align: center;">
           <!-- Result injected here -->
@@ -1172,19 +1157,14 @@
         }
       }
 
-      playClick() {
-        this.playTone(400, 'sine', 0.08, 0.08);
-      }
+      playClick() { this.playTone(400, 'sine', 0.08, 0.08); }
 
       playCorrect() {
         if (this.muted) return;
         this.init();
         if (!this.ctx) return;
-        const now = this.ctx.currentTime;
         [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
-          setTimeout(() => {
-            this.playTone(freq, 'triangle', 0.15, 0.12);
-          }, idx * 90);
+          setTimeout(() => { this.playTone(freq, 'triangle', 0.15, 0.12); }, idx * 90);
         });
       }
 
@@ -1193,9 +1173,7 @@
         this.init();
         if (!this.ctx) return;
         [280, 220].forEach((freq, idx) => {
-          setTimeout(() => {
-            this.playTone(freq, 'sawtooth', 0.2, 0.1);
-          }, idx * 120);
+          setTimeout(() => { this.playTone(freq, 'sawtooth', 0.2, 0.1); }, idx * 120);
         });
       }
 
@@ -1203,11 +1181,8 @@
         if (this.muted) return;
         this.init();
         if (!this.ctx) return;
-        const notes = [440, 554.37, 659.25, 880];
-        notes.forEach((freq, idx) => {
-          setTimeout(() => {
-            this.playTone(freq, 'sine', 0.25, 0.15);
-          }, idx * 140);
+        [440, 554.37, 659.25, 880].forEach((freq, idx) => {
+          setTimeout(() => { this.playTone(freq, 'sine', 0.25, 0.15); }, idx * 140);
         });
       }
     }
@@ -1219,352 +1194,362 @@
       return b === 0 ? a : gcd(b, a % b);
     }
 
+    /* HELPER: FISHER-YATES SHUFFLE ALGORITHM FOR ANSWER RANDOMIZATION */
+    function shuffleArray(arr) {
+      const array = [...arr];
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
     /* GAME DATA & QUESTION BANK (30+ UNIQUE QUESTIONS) */
     const QUESTION_BANK = {
-      1: [ // AREA 1: Visual Matching & Ratio Representation
+      1: [ // STAGE 1: RATIO VILLAGE (Visual Ratio Representation)
         {
-          id: 'a1_1',
+          id: 's1_1',
           type: 'visual',
-          question: 'Apakah nisbah bilangan epal kepada oren?',
-          itemsA: { icon: '🍎', count: 4, label: 'Epal' },
-          itemsB: { icon: '🍊', count: 6, label: 'Oren' },
+          question: 'What is the ratio of apples to oranges?',
+          itemsA: { icon: '🍎', count: 4, label: 'Apples' },
+          itemsB: { icon: '🍊', count: 6, label: 'Oranges' },
           options: ['4 : 6', '6 : 4', '4 : 10', '2 : 5'],
           correct: '4 : 6',
-          explanation: 'Terdapat 4 epal dan 6 oren. Jadi, nisbah epal kepada oren ialah 4 : 6.',
-          hint: 'Kira bilangan epal terlebih dahulu, kemudian bilangan oren.'
+          explanation: 'There are 4 apples and 6 oranges. Therefore, the ratio of apples to oranges is 4 : 6.',
+          hint: 'Count the number of apples first (4), then count the oranges (6).'
         },
         {
-          id: 'a1_2',
+          id: 's1_2',
           type: 'visual',
-          question: 'Apakah nisbah bilangan bola merah kepada bola biru?',
-          itemsA: { icon: '🔴', count: 3, label: 'Merah' },
-          itemsB: { icon: '🔵', count: 9, label: 'Biru' },
+          question: 'What is the ratio of red balls to blue balls?',
+          itemsA: { icon: '🔴', count: 3, label: 'Red' },
+          itemsB: { icon: '🔵', count: 9, label: 'Blue' },
           options: ['3 : 9', '9 : 3', '3 : 12', '1 : 4'],
           correct: '3 : 9',
-          explanation: 'Terdapat 3 bola merah dan 9 bola biru. Nisbahnya ialah 3 : 9.',
-          hint: 'Kira bilangan bola merah diikuti dengan bola biru.'
+          explanation: 'There are 3 red balls and 9 blue balls. The ratio is 3 : 9.',
+          hint: 'Count red balls first, followed by blue balls.'
         },
         {
-          id: 'a1_3',
+          id: 's1_3',
           type: 'visual',
-          question: 'Apakah nisbah bilangan bintang kuning kepada bintang hijau?',
-          itemsA: { icon: '⭐', count: 5, label: 'Kuning' },
-          itemsB: { icon: '🌟', count: 10, label: 'Hijau' },
+          question: 'What is the ratio of yellow stars to green stars?',
+          itemsA: { icon: '⭐', count: 5, label: 'Yellow' },
+          itemsB: { icon: '🌟', count: 10, label: 'Green' },
           options: ['5 : 10', '10 : 5', '5 : 15', '1 : 3'],
           correct: '5 : 10',
-          explanation: 'Ada 5 bintang kuning dan 10 bintang hijau. Nisbahnya ditulis sebagai 5 : 10.',
-          hint: 'Bintang kuning berada di sebelah kiri dan bintang hijau di sebelah kanan.'
+          explanation: 'There are 5 yellow stars and 10 green stars. The ratio is 5 : 10.',
+          hint: 'Yellow stars are on the left (5) and green stars on the right (10).'
         },
         {
-          id: 'a1_4',
+          id: 's1_4',
           type: 'visual',
-          question: 'Apakah nisbah bilangan buku merah kepada pensel hijau?',
-          itemsA: { icon: '📕', count: 6, label: 'Buku' },
-          itemsB: { icon: '✏️', count: 8, label: 'Pensel' },
+          question: 'What is the ratio of red books to green pencils?',
+          itemsA: { icon: '📕', count: 6, label: 'Books' },
+          itemsB: { icon: '✏️', count: 8, label: 'Pencils' },
           options: ['6 : 8', '8 : 6', '6 : 14', '3 : 7'],
           correct: '6 : 8',
-          explanation: 'Bilangan buku ialah 6 dan pensel ialah 8. Nisbahnya ialah 6 : 8.',
-          hint: 'Pastikan susunan nisbah mengikut urutan soalan: Buku kepada Pensel.'
+          explanation: 'There are 6 books and 8 pencils. The ratio is 6 : 8.',
+          hint: 'Keep the order as Books to Pencils: 6 to 8.'
         },
         {
-          id: 'a1_5',
+          id: 's1_5',
           type: 'visual',
-          question: 'Apakah nisbah bilangan kereta merah kepada bas biru?',
-          itemsA: { icon: '🚗', count: 2, label: 'Kereta' },
-          itemsB: { icon: '🚌', count: 6, label: 'Bas' },
+          question: 'What is the ratio of red cars to blue buses?',
+          itemsA: { icon: '🚗', count: 2, label: 'Cars' },
+          itemsB: { icon: '🚌', count: 6, label: 'Buses' },
           options: ['2 : 6', '6 : 2', '2 : 8', '1 : 4'],
           correct: '2 : 6',
-          explanation: 'Terdapat 2 kereta dan 6 bas. Nisbahnya ialah 2 : 6.',
-          hint: 'Kira kereta dulu (2), kemudian bas (6).'
+          explanation: 'There are 2 cars and 6 buses. The ratio is 2 : 6.',
+          hint: 'Count cars first (2) and then buses (6).'
         },
         {
-          id: 'a1_6',
+          id: 's1_6',
           type: 'visual',
-          question: 'Apakah nisbah bilangan kek cawan kepada daster donut?',
-          itemsA: { icon: '🧁', count: 8, label: 'Kek Cawan' },
-          itemsB: { icon: '🍩', count: 12, label: 'Donut' },
+          question: 'What is the ratio of cupcakes to donuts?',
+          itemsA: { icon: '🧁', count: 8, label: 'Cupcakes' },
+          itemsB: { icon: '🍩', count: 12, label: 'Donuts' },
           options: ['8 : 12', '12 : 8', '8 : 20', '2 : 5'],
           correct: '8 : 12',
-          explanation: 'Terdapat 8 kek cawan dan 12 donut. Nisbahnya ialah 8 : 12.',
-          hint: 'Bilangan kek cawan ialah 8 dan donut ialah 12.'
+          explanation: 'There are 8 cupcakes and 12 donuts. The ratio is 8 : 12.',
+          hint: 'Number of cupcakes is 8 and donuts is 12.'
         }
       ],
 
-      2: [ // AREA 2: Step-by-Step Simplification Using Common Divisors
+      2: [ // STAGE 2: SIMPLIFY FOREST (Step-by-Step Divisors)
         {
-          id: 'a2_1',
+          id: 's2_1',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 12 : 18 kepada bentuk termudah.',
+          question: 'Simplify the ratio 12 : 18 to its simplest form.',
           startA: 12,
           startB: 18,
           divisors: [2, 3, 6],
           targetA: 2,
           targetB: 3,
-          explanation: '12 dan 18 kedua-duanya boleh dibahagi dengan 6. 12÷6=2 dan 18÷6=3. Nisbah termudah ialah 2 : 3.',
-          hint: 'Cari nombor yang boleh membahagi kedua-dua 12 dan 18 tanpa baki.'
+          explanation: 'Both 12 and 18 can be divided by 6. 12÷6=2 and 18÷6=3. The simplest form is 2 : 3.',
+          hint: 'Find a whole number that divides both 12 and 18 without remainder.'
         },
         {
-          id: 'a2_2',
+          id: 's2_2',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 8 : 12 kepada bentuk termudah.',
+          question: 'Simplify the ratio 8 : 12 to its simplest form.',
           startA: 8,
           startB: 12,
           divisors: [2, 4],
           targetA: 2,
           targetB: 3,
-          explanation: '8÷4 = 2 dan 12÷4 = 3. Maka, nisbah termudah ialah 2 : 3.',
-          hint: 'Pembahagi sepunya terbesar bagi 8 dan 12 ialah 4.'
+          explanation: '8÷4 = 2 and 12÷4 = 3. The simplest form is 2 : 3.',
+          hint: 'The greatest common divisor for 8 and 12 is 4.'
         },
         {
-          id: 'a2_3',
+          id: 's2_3',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 10 : 15 kepada bentuk termudah.',
+          question: 'Simplify the ratio 10 : 15 to its simplest form.',
           startA: 10,
           startB: 15,
           divisors: [5],
           targetA: 2,
           targetB: 3,
-          explanation: '10÷5 = 2 dan 15÷5 = 3. Nisbah termudah ialah 2 : 3.',
-          hint: 'Nombor yang berakhir dengan 0 dan 5 boleh dibahagi dengan 5.'
+          explanation: '10÷5 = 2 and 15÷5 = 3. The simplest form is 2 : 3.',
+          hint: 'Numbers ending in 0 and 5 can be divided by 5.'
         },
         {
-          id: 'a2_4',
+          id: 's2_4',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 15 : 20 kepada bentuk termudah.',
+          question: 'Simplify the ratio 15 : 20 to its simplest form.',
           startA: 15,
           startB: 20,
           divisors: [5],
           targetA: 3,
           targetB: 4,
-          explanation: '15÷5 = 3 dan 20÷5 = 4. Nisbah termudah ialah 3 : 4.',
-          hint: 'Bahagikan 15 dan 20 dengan 5.'
+          explanation: '15÷5 = 3 and 20÷5 = 4. The simplest form is 3 : 4.',
+          hint: 'Divide 15 and 20 by 5.'
         },
         {
-          id: 'a2_5',
+          id: 's2_5',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 18 : 24 kepada bentuk termudah.',
+          question: 'Simplify the ratio 18 : 24 to its simplest form.',
           startA: 18,
           startB: 24,
           divisors: [2, 3, 6],
           targetA: 3,
           targetB: 4,
-          explanation: '18 dan 24 dibahagi 6 menghasilkan 3 : 4.',
-          hint: 'Cuba membahagikan dengan 6 untuk mendapat langkah terpantas.'
+          explanation: 'Dividing 18 and 24 by 6 gives 3 : 4.',
+          hint: 'Try dividing both numbers by 6 for the fastest path.'
         },
         {
-          id: 'a2_6',
+          id: 's2_6',
           type: 'step_simplify',
-          question: 'Permudahkan nisbah 20 : 30 kepada bentuk termudah.',
+          question: 'Simplify the ratio 20 : 30 to its simplest form.',
           startA: 20,
           startB: 30,
           divisors: [2, 5, 10],
           targetA: 2,
           targetB: 3,
-          explanation: 'Bahagikan 20 dan 30 dengan 10 untuk mendapat 2 : 3.',
-          hint: 'Kedua-dua nombor berakhir dengan 0, jadi boleh dibahagi dengan 10.'
+          explanation: 'Divide 20 and 30 by 10 to get 2 : 3.',
+          hint: 'Both numbers end in 0, so divide by 10.'
         }
       ],
 
-      3: [ // AREA 3: Missing Numbers & Equivalent Ratios
+      3: [ // STAGE 3: NUMBER CITY (Real-World Applications)
         {
-          id: 'a3_1',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 12 : 18 =  ?  : 3',
-          options: ['2', '3', '4', '6'],
-          correct: '2',
-          explanation: '18 ÷ 6 = 3. Maka, 12 ÷ 6 = 2. Jawapan yang betul ialah 2.',
-          hint: 'Perhatikan bagaimana 18 menjadi 3 (dibahagi 6). Lakukan perkara sama pada 12.'
-        },
-        {
-          id: 'a3_2',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 15 : 25 = 3 :  ? ',
-          options: ['4', '5', '6', '10'],
-          correct: '5',
-          explanation: '15 ÷ 5 = 3. Maka, 25 ÷ 5 = 5. Nombor tersembunyi ialah 5.',
-          hint: '15 dibahagi 5 menjadi 3. Bahagikan 25 dengan 5.'
-        },
-        {
-          id: 'a3_3',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 16 : 24 =  ?  : 3',
-          options: ['2', '4', '6', '8'],
-          correct: '2',
-          explanation: '24 ÷ 8 = 3. Maka 16 ÷ 8 = 2. Jawapan tersembunyi ialah 2.',
-          hint: '24 dibahagi dengan 8 mendapat 3. Bahagikan 16 dengan 8.'
-        },
-        {
-          id: 'a3_4',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 14 : 21 = 2 :  ? ',
-          options: ['3', '5', '7', '9'],
-          correct: '3',
-          explanation: '14 ÷ 7 = 2. Maka 21 ÷ 7 = 3. Jawapan tersembunyi ialah 3.',
-          hint: '14 dibahagi 7 mendapat 2. Bahagikan 21 dengan 7.'
-        },
-        {
-          id: 'a3_5',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 24 : 36 =  ?  : 3',
-          options: ['2', '3', '4', '6'],
-          correct: '2',
-          explanation: '36 ÷ 12 = 3. Maka 24 ÷ 12 = 2.',
-          hint: 'Bahagikan kedua-dua nombor dengan 12.'
-        },
-        {
-          id: 'a3_6',
-          type: 'missing_val',
-          question: 'Cari nombor yang tersembunyi: 9 : 12 = 3 :  ? ',
-          options: ['4', '5', '6', '8'],
-          correct: '4',
-          explanation: '9 ÷ 3 = 3. Maka 12 ÷ 3 = 4.',
-          hint: '9 dibahagi 3 menjadi 3. Bahagikan 12 dengan 3.'
-        }
-      ],
-
-      4: [ // AREA 4: Real-Life Missions & Situational Questions
-        {
-          id: 'a4_1',
+          id: 's3_1',
           type: 'context',
-          question: 'Di dalam sebuah bakul terdapat 12 epal dan 16 oren. Apakah nisbah epal kepada oren dalam bentuk termudah?',
-          itemsA: { icon: '🍎', count: 12, label: 'Epal (12)' },
-          itemsB: { icon: '🍊', count: 16, label: 'Oren (16)' },
+          question: 'In a basket, there are 12 red apples and 16 oranges. What is the ratio of apples to oranges in simplest form?',
+          itemsA: { icon: '🍎', count: 12, label: 'Apples (12)' },
+          itemsB: { icon: '🍊', count: 16, label: 'Oranges (16)' },
           options: ['3 : 4', '4 : 3', '12 : 16', '2 : 3'],
           correct: '3 : 4',
-          explanation: '12 dan 16 kedua-duanya dibahagi dengan 4. 12÷4=3 dan 16÷4=4. Nisbah termudah ialah 3 : 4.',
-          hint: 'Cari nombor yang boleh membahagi 12 dan 16, iaitu 4.'
+          explanation: '12 and 16 can both be divided by 4. 12÷4=3 and 16÷4=4. Simplest form is 3 : 4.',
+          hint: 'Find a common factor for 12 and 16, which is 4.'
         },
         {
-          id: 'a4_2',
+          id: 's3_2',
           type: 'context',
-          question: 'Pasukan Bola Sepak Sekolah mempunyai 10 pemain lelaki dan 15 pemain perempuan. Apakah nisbah lelaki kepada perempuan dalam bentuk termudah?',
-          itemsA: { icon: '👦', count: 10, label: 'Lelaki (10)' },
-          itemsB: { icon: '👧', count: 15, label: 'Perempuan (15)' },
+          question: 'The school football team has 10 boys and 15 girls. What is the ratio of boys to girls in simplest form?',
+          itemsA: { icon: '👦', count: 10, label: 'Boys (10)' },
+          itemsB: { icon: '👧', count: 15, label: 'Girls (15)' },
           options: ['2 : 3', '3 : 2', '10 : 15', '1 : 2'],
           correct: '2 : 3',
-          explanation: '10 ÷ 5 = 2 dan 15 ÷ 5 = 3. Nisbah termudah ialah 2 : 3.',
-          hint: 'Bahagikan kedua-dua kuantiti dengan 5.'
+          explanation: '10 ÷ 5 = 2 and 15 ÷ 5 = 3. Simplest ratio is 2 : 3.',
+          hint: 'Divide both numbers by 5.'
         },
         {
-          id: 'a4_3',
+          id: 's3_3',
           type: 'context',
-          question: 'Di dalam kotak alat tulis, terdapat 18 pensel biru dan 24 pensel merah. Apakah nisbah pensel biru kepada pensel merah dalam bentuk termudah?',
-          itemsA: { icon: '✏️', count: 18, label: 'Pensel Biru (18)' },
-          itemsB: { icon: '🖍️', count: 24, label: 'Pensel Merah (24)' },
+          question: 'In a stationery box, there are 18 blue pencils and 24 red pencils. What is the ratio of blue to red pencils in simplest form?',
+          itemsA: { icon: '✏️', count: 18, label: 'Blue Pencils (18)' },
+          itemsB: { icon: '🖍️', count: 24, label: 'Red Pencils (24)' },
           options: ['3 : 4', '4 : 3', '2 : 3', '6 : 8'],
           correct: '3 : 4',
-          explanation: '18 dan 24 boleh dibahagi dengan 6. 18÷6=3 dan 24÷6=4. Nisbah termudah ialah 3 : 4.',
-          hint: 'Bahagikan 18 dan 24 dengan pembahagi sepunya terbesar iaitu 6.'
+          explanation: '18 and 24 can be divided by 6. 18÷6=3 and 24÷6=4. Simplest ratio is 3 : 4.',
+          hint: 'Divide 18 and 24 by their greatest common factor, 6.'
         },
         {
-          id: 'a4_4',
+          id: 's3_4',
           type: 'context',
-          question: 'Puan Siti membuat minuman dengan mencampurkan 6 cawan kordial sirap dan 18 cawan air. Apakah nisbah kordial kepada air dalam bentuk termudah?',
-          itemsA: { icon: '🧃', count: 6, label: 'Kordial (6)' },
-          itemsB: { icon: '💧', count: 18, label: 'Air (18)' },
+          question: 'Mrs. Lee mixes 6 cups of syrup cordial with 18 cups of water. What is the ratio of syrup to water in simplest form?',
+          itemsA: { icon: '🧃', count: 6, label: 'Syrup (6)' },
+          itemsB: { icon: '💧', count: 18, label: 'Water (18)' },
           options: ['1 : 3', '3 : 1', '6 : 18', '2 : 6'],
           correct: '1 : 3',
-          explanation: '6 ÷ 6 = 1 dan 18 ÷ 6 = 3. Nisbah termudah ialah 1 : 3.',
-          hint: 'Bahagikan kedua-dua nombor 6 dan 18 dengan 6.'
+          explanation: '6 ÷ 6 = 1 and 18 ÷ 6 = 3. Simplest ratio is 1 : 3.',
+          hint: 'Divide both 6 and 18 by 6.'
         },
         {
-          id: 'a4_5',
+          id: 's3_5',
           type: 'context',
-          question: 'Di taman sekolah terdapat 15 pokok bunga raya dan 20 pokok bunga kertas. Apakah nisbah pokok bunga raya kepada pokok bunga kertas dalam bentuk termudah?',
-          itemsA: { icon: '🌺', count: 15, label: 'Bunga Raya (15)' },
-          itemsB: { icon: '🌸', count: 20, label: 'Bunga Kertas (20)' },
+          question: 'In the garden, there are 15 hibiscus plants and 20 bougainvillea plants. What is the ratio of hibiscus to bougainvillea in simplest form?',
+          itemsA: { icon: '🌺', count: 15, label: 'Hibiscus (15)' },
+          itemsB: { icon: '🌸', count: 20, label: 'Bougainvillea (20)' },
           options: ['3 : 4', '4 : 3', '3 : 5', '15 : 20'],
           correct: '3 : 4',
-          explanation: '15÷5 = 3 dan 20÷5 = 4. Nisbah termudah ialah 3 : 4.',
-          hint: 'Bahagikan 15 dan 20 dengan 5.'
+          explanation: '15÷5 = 3 and 20÷5 = 4. Simplest form is 3 : 4.',
+          hint: 'Divide 15 and 20 by 5.'
         },
         {
-          id: 'a4_6',
+          id: 's3_6',
           type: 'context',
-          question: 'Dalam Rumah Sukan Hang Tuah, terdapat 14 atlet lumba lari dan 21 atlet lompat tinggi. Apakah nisbah atlet lumba lari kepada lompat tinggi dalam bentuk termudah?',
-          itemsA: { icon: '🏃', count: 14, label: 'Lumba Lari (14)' },
-          itemsB: { icon: '🤸', count: 21, label: 'Lompat Tinggi (21)' },
+          question: 'In Yellow Sport House, there are 14 runners and 21 high jumpers. What is the ratio of runners to jumpers in simplest form?',
+          itemsA: { icon: '🏃', count: 14, label: 'Runners (14)' },
+          itemsB: { icon: '🤸', count: 21, label: 'Jumpers (21)' },
           options: ['2 : 3', '3 : 2', '7 : 14', '2 : 5'],
           correct: '2 : 3',
-          explanation: '14 dan 21 boleh dibahagi dengan 7. 14÷7=2 dan 21÷7=3. Nisbah termudah ialah 2 : 3.',
-          hint: '14 dan 21 adalah gandaan 7. Bahagikan dengan 7.'
+          explanation: '14 and 21 can be divided by 7. 14÷7=2 and 21÷7=3. Simplest ratio is 2 : 3.',
+          hint: '14 and 21 are multiples of 7. Divide by 7.'
         }
       ],
 
-      5: [ // AREA 5: Final Master Challenge & Reasoning Error Analysis
+      4: [ // STAGE 4: RATIO TOWER (Missing Values & Reasoning)
         {
-          id: 'a5_1',
-          type: 'reasoning',
-          question: 'Aiman mengatakan nisbah 8 : 12 = 4 : 6, tetapi rakannya Mei Lin mengatakan jawapan dalam bentuk termudah ialah 2 : 3. Siapakah yang betul?',
-          options: [
-            'Mei Lin betul, kerana 4 : 6 masih boleh dibahagi dengan 2 lagi menjadi 2 : 3.',
-            'Aiman betul, kerana 4 : 6 sudah cukuplah ringkas.',
-            'Kedua-duanya salah, nisbah termudah ialah 1 : 2.',
-            'Kedua-duanya betul tanpa sebarang perbezaan.'
-          ],
-          correct: 'Mei Lin betul, kerana 4 : 6 masih boleh dibahagi dengan 2 lagi menjadi 2 : 3.',
-          explanation: 'Mei Lin betul! Nisbah termudah mestilah tidak boleh dibahagi lagi dengan sebarang nombor bulat (selain 1). 4 dan 6 masih boleh dibahagi dengan 2.',
-          hint: 'Adakah nisbah 4 : 6 boleh dibahagi lagi dengan nombor lain?'
+          id: 's4_1',
+          type: 'missing_val',
+          question: 'Find the missing value: 12 : 18 =  ?  : 3',
+          options: ['2', '3', '4', '6'],
+          correct: '2',
+          explanation: '18 ÷ 6 = 3. So, 12 ÷ 6 = 2. The missing value is 2.',
+          hint: 'Look at how 18 becomes 3 (divided by 6). Do the same to 12.'
         },
         {
-          id: 'a5_2',
-          type: 'reasoning',
-          question: 'Adakah nisbah 9 : 15 berada dalam bentuk termudah? Mengapa?',
-          options: [
-            'Tidak, kerana kedua-duanya masih boleh dibahagi dengan 3 menjadi 3 : 5.',
-            'Ya, kerana 9 dan 15 adalah nombor ganjil.',
-            'Ya, kerana tiada nombor genap.',
-            'Tidak, nisbah termudah ialah 1 : 5.'
-          ],
-          correct: 'Tidak, kerana kedua-duanya masih boleh dibahagi dengan 3 menjadi 3 : 5.',
-          explanation: 'Tepat sekali! 9÷3=3 dan 15÷3=5. Maka bentuk termudah ialah 3 : 5.',
-          hint: 'Semak sama ada 9 dan 15 boleh dibahagi dengan 3.'
+          id: 's4_2',
+          type: 'missing_val',
+          question: 'Find the missing value: 15 : 25 = 3 :  ? ',
+          options: ['5', '4', '6', '10'],
+          correct: '5',
+          explanation: '15 ÷ 5 = 3. So, 25 ÷ 5 = 5. The missing value is 5.',
+          hint: '15 divided by 5 is 3. Divide 25 by 5.'
         },
         {
-          id: 'a5_3',
-          type: 'reasoning',
-          question: 'Siti menyatakan bahawa nisbah 5 : 7 tidak boleh dipermudahkan lagi. Adakah penyataan Siti betul?',
-          options: [
-            'Ya, betul. Kerana tiada nombor bulat selain 1 yang boleh membahagi 5 dan 7.',
-            'Salah, nisbah 5 : 7 sepatutnya menjadi 1 : 2.',
-            'Salah, 5 dan 7 boleh dibahagi dengan 5.',
-            'Tidak pasti.'
-          ],
-          correct: 'Ya, betul. Kerana tiada nombor bulat selain 1 yang boleh membahagi 5 dan 7.',
-          explanation: 'Syabas! 5 dan 7 adalah nombor perdana. Tiada pembahagi sepunya selain 1, jadi 5 : 7 sudah dalam bentuk termudah.',
-          hint: 'Adakah terdapat nombor bulat yang boleh membahagi 5 dan 7 serentak?'
+          id: 's4_3',
+          type: 'missing_val',
+          question: 'Find the missing value: 16 : 24 =  ?  : 3',
+          options: ['2', '4', '6', '8'],
+          correct: '2',
+          explanation: '24 ÷ 8 = 3. So 16 ÷ 8 = 2. Missing number is 2.',
+          hint: '24 divided by 8 is 3. Divide 16 by 8.'
         },
         {
-          id: 'a5_4',
-          type: 'reasoning',
-          question: 'Dua buah nisbah 12 : 16 dan 18 : 24 didakwa mewakilkan hubungan yang sama dalam bentuk termudah. Adakah ini benar?',
-          options: [
-            'Benar, kedua-duanya dipermudahkan menjadi 3 : 4.',
-            'Palsu, 12 : 16 ialah 2 : 3 manakala 18 : 24 ialah 3 : 4.',
-            'Palsu, nombornya berbeza jadi hubungannya tidak sama.',
-            'Tidak benar sama sekali.'
-          ],
-          correct: 'Benar, kedua-duanya dipermudahkan menjadi 3 : 4.',
-          explanation: 'Tepat! 12:16 (dibahagi 4) = 3:4. 18:24 (dibahagi 6) = 3:4. Kedua-duanya mempunyai nisbah termudah yang sama!',
-          hint: 'Permudahkan kedua-dua nisbah 12 : 16 dan 18 : 24.'
+          id: 's4_4',
+          type: 'missing_val',
+          question: 'Find the missing value: 14 : 21 = 2 :  ? ',
+          options: ['3', '5', '7', '9'],
+          correct: '3',
+          explanation: '14 ÷ 7 = 2. So 21 ÷ 7 = 3. Missing number is 3.',
+          hint: '14 divided by 7 is 2. Divide 21 by 7.'
         },
         {
-          id: 'a5_5',
+          id: 's4_5',
+          type: 'missing_val',
+          question: 'Find the missing value: 24 : 36 =  ?  : 3',
+          options: ['2', '3', '4', '6'],
+          correct: '2',
+          explanation: '36 ÷ 12 = 3. So 24 ÷ 12 = 2.',
+          hint: 'Divide both numbers by 12.'
+        },
+        {
+          id: 's4_6',
+          type: 'missing_val',
+          question: 'Find the missing value: 9 : 12 = 3 :  ? ',
+          options: ['4', '5', '6', '8'],
+          correct: '4',
+          explanation: '9 ÷ 3 = 3. So 12 ÷ 3 = 4.',
+          hint: '9 divided by 3 is 3. Divide 12 by 3.'
+        }
+      ],
+
+      5: [ // STAGE 5: RATIO CASTLE (Final Boss & Error Analysis)
+        {
+          id: 's5_1',
           type: 'reasoning',
-          question: 'Apakah nisbah termudah bagi 24 : 32?',
+          question: 'Ben says that 8 : 12 = 4 : 6 is the simplest form, but Mei Lin says the simplest form is 2 : 3. Who is correct?',
+          options: [
+            'Mei Lin is correct, because 4 : 6 can still be divided by 2 to get 2 : 3.',
+            'Ben is correct, because 4 : 6 is already small enough.',
+            'Both are wrong, the simplest form is 1 : 2.',
+            'Both are completely equal with no difference.'
+          ],
+          correct: 'Mei Lin is correct, because 4 : 6 can still be divided by 2 to get 2 : 3.',
+          explanation: 'Mei Lin is correct! A ratio is in simplest form ONLY when it cannot be divided any further by whole numbers (other than 1).',
+          hint: 'Can 4 and 6 still be divided by another number?'
+        },
+        {
+          id: 's5_2',
+          type: 'reasoning',
+          question: 'Is the ratio 9 : 15 in its simplest form? Why?',
+          options: [
+            'No, because both numbers can still be divided by 3 to become 3 : 5.',
+            'Yes, because 9 and 15 are odd numbers.',
+            'Yes, because there are no even numbers.',
+            'No, the simplest form is 1 : 5.'
+          ],
+          correct: 'No, because both numbers can still be divided by 3 to become 3 : 5.',
+          explanation: 'Great job! 9÷3=3 and 15÷3=5. Therefore the simplest form is 3 : 5.',
+          hint: 'Check if 9 and 15 can both be divided by 3.'
+        },
+        {
+          id: 's5_3',
+          type: 'reasoning',
+          question: 'Sarah claims that the ratio 5 : 7 cannot be simplified further. Is Sarah correct?',
+          options: [
+            'Yes, correct. Because no whole number other than 1 can divide both 5 and 7.',
+            'No, 5 : 7 should be simplified to 1 : 2.',
+            'No, 5 and 7 can both be divided by 5.',
+            'Not sure.'
+          ],
+          correct: 'Yes, correct. Because no whole number other than 1 can divide both 5 and 7.',
+          explanation: 'Well done! 5 and 7 are prime numbers. No common whole number divisor exists except 1, so 5 : 7 is already in simplest form.',
+          hint: 'Is there any whole number that divides both 5 and 7?'
+        },
+        {
+          id: 's5_4',
+          type: 'reasoning',
+          question: 'Are the ratios 12 : 16 and 18 : 24 equivalent in simplest form?',
+          options: [
+            'Yes, both simplify to 3 : 4.',
+            'No, 12 : 16 is 2 : 3 while 18 : 24 is 3 : 4.',
+            'No, because the original numbers are different.',
+            'Not equivalent at all.'
+          ],
+          correct: 'Yes, both simplify to 3 : 4.',
+          explanation: 'Spot on! 12:16 (divided by 4) = 3:4. 18:24 (divided by 6) = 3:4. Both share the exact same simplest form!',
+          hint: 'Simplify both 12 : 16 and 18 : 24 to their simplest forms.'
+        },
+        {
+          id: 's5_5',
+          type: 'reasoning',
+          question: 'What is the simplest form of 24 : 32?',
           options: ['3 : 4', '6 : 8', '12 : 16', '2 : 3'],
           correct: '3 : 4',
-          explanation: '24 dan 32 dibahagi dengan pembahagi sepunya terbesar iaitu 8, menghasilkan 3 : 4.',
-          hint: 'Bahagikan 24 dan 32 dengan 8.'
+          explanation: '24 and 32 divided by their greatest common divisor 8 yields 3 : 4.',
+          hint: 'Divide 24 and 32 by 8.'
         },
         {
-          id: 'a5_6',
+          id: 's5_6',
           type: 'reasoning',
-          question: 'Sebuah kotak mengandungi 16 guli merah, 24 guli hijau dan tiada guli lain. Nisbah guli merah kepada guli hijau dalam bentuk termudah ialah...',
+          question: 'A box has 16 red marbles and 24 green marbles. The ratio of red marbles to green marbles in simplest form is...',
           options: ['2 : 3', '4 : 6', '8 : 12', '1 : 2'],
           correct: '2 : 3',
-          explanation: '16 ÷ 8 = 2 dan 24 ÷ 8 = 3. Nisbah termudah ialah 2 : 3.',
-          hint: 'Bahagikan 16 dan 24 dengan 8.'
+          explanation: '16 ÷ 8 = 2 and 24 ÷ 8 = 3. Simplest ratio is 2 : 3.',
+          hint: 'Divide 16 and 24 by 8.'
         }
       ]
     };
@@ -1572,8 +1557,7 @@
     /* GAME ENGINE STATE CLASS */
     class GameEngine {
       constructor() {
-        this.nickname = 'Pengembara';
-        this.isPairMode = false;
+        this.nickname = 'Explorer';
         this.stars = 0;
         this.coins = 0;
         this.lives = 3;
@@ -1582,7 +1566,6 @@
         this.areaQuestions = [];
         this.unlockedAreas = [1];
         this.badges = [];
-        this.consecutiveMistakes = 0;
 
         // Interactive Step Simplification State
         this.stepCurrentA = 0;
@@ -1621,9 +1604,7 @@
 
         document.getElementById('btn-start-game').addEventListener('click', () => {
           const nameInput = document.getElementById('player-nickname').value.trim();
-          this.nickname = nameInput || 'Pengembara';
-          this.isPairMode = document.getElementById('pair-mode-checkbox').checked;
-          document.getElementById('stat-mode-badge').innerText = this.isPairMode ? 'Berpasangan 👥' : 'Solo 👤';
+          this.nickname = nameInput || 'Explorer';
           sound.playClick();
           this.showScreen('screen-learn');
         });
@@ -1654,6 +1635,12 @@
 
         document.getElementById('btn-hint').addEventListener('click', () => {
           this.showHint();
+        });
+
+        document.getElementById('btn-retry-stage').addEventListener('click', () => {
+          sound.playClick();
+          this.closeModals();
+          this.startArea(this.currentArea);
         });
 
         document.getElementById('btn-report-continue').addEventListener('click', () => {
@@ -1697,35 +1684,36 @@
 
       startArea(areaNum) {
         if (!this.unlockedAreas.includes(areaNum)) {
-          alert('Kawasan ini masih dikunci! Selesaikan kawasan sebelumnya dahulu.');
+          alert('This stage is locked! Complete previous stages first.');
           return;
         }
 
         sound.playClick();
         this.currentArea = areaNum;
         this.currentQuestionIndex = 0;
+        this.lives = 3; // Reset to 3 lives per stage
 
-        // Shuffle & pick 5 questions for this area
-        const pool = [...QUESTION_BANK[areaNum]];
-        pool.sort(() => Math.random() - 0.5);
+        // Shuffle & pick 5 questions for this stage
+        const pool = shuffleArray(QUESTION_BANK[areaNum]);
         this.areaQuestions = pool.slice(0, 5);
 
+        this.updateStatsUI();
         this.showScreen('screen-gameplay');
         this.renderQuestion();
       }
 
       renderQuestion() {
         const q = this.areaQuestions[this.currentQuestionIndex];
-        const areaNames = [
-          'Desa Nisbah (Visual)',
-          'Hutan Pemudahan (Langkah Demi Langkah)',
-          'Bandar Nombor (Nombor Tersembunyi)',
-          'Menara Nisbah (Misi Situasi)',
-          'Kastil Master Nisbah (Cabaran Akhir)'
+        const stageTitles = [
+          'STAGE 1: Ratio Village',
+          'STAGE 2: Simplify Forest',
+          'STAGE 3: Number City',
+          'STAGE 4: Ratio Tower',
+          'STAGE 5: Ratio Castle'
         ];
 
-        document.getElementById('game-level-title').innerText = `Kawasan ${this.currentArea}: ${areaNames[this.currentArea - 1]}`;
-        document.getElementById('game-question-tracker').innerText = `Soalan ${this.currentQuestionIndex + 1} / ${this.areaQuestions.length}`;
+        document.getElementById('game-level-title').innerText = stageTitles[this.currentArea - 1];
+        document.getElementById('game-question-tracker').innerText = `Question ${this.currentQuestionIndex + 1} / ${this.areaQuestions.length}`;
         document.getElementById('game-question-text').innerText = q.question;
 
         const visualBox = document.getElementById('game-visual-box');
@@ -1733,13 +1721,14 @@
         const optionsGrid = document.getElementById('game-options-grid');
         const feedbackBox = document.getElementById('game-feedback-box');
         const btnNext = document.getElementById('btn-next-question');
+        const btnHint = document.getElementById('btn-hint');
 
         feedbackBox.className = 'feedback-box';
         feedbackBox.style.display = 'none';
         btnNext.style.display = 'none';
-        this.consecutiveMistakes = 0;
+        btnHint.style.display = 'none'; // HIDE HINT BUTTON INITIALLY
 
-        // AREA 2: Step-by-Step Divisor Interactive Mode
+        // STAGE 2: Interactive Step-by-Step Divisors
         if (q.type === 'step_simplify') {
           visualBox.style.display = 'none';
           divisorContainer.style.display = 'flex';
@@ -1749,11 +1738,10 @@
           this.stepCurrentB = q.startB;
           this.renderStepDivisorUI(q);
         } else {
-          // Standard Visual or Option-based Questions
           divisorContainer.style.display = 'none';
           optionsGrid.style.display = 'grid';
 
-          // Render Visual Box if items present
+          // Visual Box Rendering
           if (q.itemsA && q.itemsB) {
             visualBox.style.display = 'flex';
             visualBox.innerHTML = `
@@ -1775,9 +1763,10 @@
             visualBox.style.display = 'none';
           }
 
-          // Render Options
+          // FISHER-YATES ANSWER CHOICE RANDOMIZATION
           optionsGrid.innerHTML = '';
-          q.options.forEach(opt => {
+          const randomizedOptions = shuffleArray(q.options);
+          randomizedOptions.forEach(opt => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             btn.innerText = opt;
@@ -1796,11 +1785,10 @@
         display.innerText = `${this.stepCurrentA} : ${this.stepCurrentB}`;
         btnList.innerHTML = '';
 
-        // Check if already reached target simplest form
         if (this.stepCurrentA === q.targetA && this.stepCurrentB === q.targetB) {
           sound.playCorrect();
           feedbackBox.className = 'feedback-box correct';
-          feedbackBox.innerHTML = `🌟 <strong>Tahniah!</strong> Nisbah telah dipermudahkan sepenuhnya kepada <strong>${q.targetA} : ${q.targetB}</strong>!`;
+          feedbackBox.innerHTML = `🌟 <strong>Awesome!</strong> The ratio is fully simplified to <strong>${q.targetA} : ${q.targetB}</strong>!`;
           feedbackBox.style.display = 'block';
           btnNext.style.display = 'inline-flex';
 
@@ -1812,7 +1800,6 @@
           return;
         }
 
-        // Available Divisor Options
         const possibleDivisors = [2, 3, 4, 5, 6, 7, 8, 9, 10];
         possibleDivisors.forEach(d => {
           const b = document.createElement('button');
@@ -1826,9 +1813,15 @@
               this.renderStepDivisorUI(q);
             } else {
               sound.playWrong();
+              this.lives--;
+              this.updateStatsUI();
               feedbackBox.className = 'feedback-box wrong';
-              feedbackBox.innerHTML = `⚠️ Nombor <strong>${d}</strong> tidak boleh membahagi kedua-dua ${this.stepCurrentA} dan ${this.stepCurrentB} tanpa baki. Cuba nombor lain!`;
+              feedbackBox.innerHTML = `❌ <strong>Not quite!</strong> ${d} cannot divide both ${this.stepCurrentA} and ${this.stepCurrentB} evenly. You lost 1 life (-1 ❤️).`;
               feedbackBox.style.display = 'block';
+
+              if (this.lives <= 0) {
+                this.openModal('modal-game-over');
+              }
             }
           };
           btnList.appendChild(b);
@@ -1838,6 +1831,7 @@
       checkAnswer(selectedOpt, btnElement, q) {
         const feedbackBox = document.getElementById('game-feedback-box');
         const btnNext = document.getElementById('btn-next-question');
+        const btnHint = document.getElementById('btn-hint');
         this.stats.totalAttempted++;
 
         if (selectedOpt === q.correct) {
@@ -1849,35 +1843,39 @@
           this.stats.totalCorrect++;
 
           feedbackBox.className = 'feedback-box correct';
-          feedbackBox.innerHTML = `✅ <strong>Betul!</strong> ${q.explanation}`;
+          feedbackBox.innerHTML = `✅ <strong>Correct!</strong> ${q.explanation}`;
           feedbackBox.style.display = 'block';
           btnNext.style.display = 'inline-flex';
+          btnHint.style.display = 'none';
 
-          // Disable options
           document.querySelectorAll('.option-btn').forEach(b => b.onclick = null);
           this.updateStatsUI();
 
         } else {
           sound.playWrong();
           btnElement.classList.add('selected-wrong');
-          this.consecutiveMistakes++;
 
-          if (this.isPairMode) {
-            feedbackBox.innerHTML = `💬 <strong>Bincang Dengan Rakan:</strong> Belum tepat. ${q.hint}`;
-          } else {
-            feedbackBox.innerHTML = `💡 <strong>Cuba Lagi:</strong> Belum tepat. ${q.hint}`;
-          }
+          // STRICT LIFE DEDUCTION: EXACTLY 1 HEART PER WRONG ANSWER
+          this.lives--;
+          this.updateStatsUI();
+
           feedbackBox.className = 'feedback-box wrong';
+          feedbackBox.innerHTML = `❌ <strong>Not quite!</strong> You lost 1 life (-1 ❤️).`;
           feedbackBox.style.display = 'block';
+
+          // REVEAL HINT BUTTON ONLY AFTER WRONG ANSWER
+          btnHint.style.display = 'inline-flex';
 
           if (!this.stats.difficultQuestions.includes(q.question)) {
             this.stats.difficultQuestions.push(q.question);
           }
 
-          if (this.lives > 1) {
-            this.lives--;
+          // GAME OVER FLOW IF LIVES REACH 0
+          if (this.lives <= 0) {
+            setTimeout(() => {
+              this.openModal('modal-game-over');
+            }, 600);
           }
-          this.updateStatsUI();
         }
       }
 
@@ -1886,7 +1884,7 @@
         const q = this.areaQuestions[this.currentQuestionIndex];
         const feedbackBox = document.getElementById('game-feedback-box');
         feedbackBox.className = 'feedback-box wrong';
-        feedbackBox.innerHTML = `🔍 <strong>Petunjuk:</strong> ${q.hint}`;
+        feedbackBox.innerHTML = `💡 <strong>Clue:</strong> ${q.hint}`;
         feedbackBox.style.display = 'block';
       }
 
@@ -1895,28 +1893,26 @@
         if (this.currentQuestionIndex < this.areaQuestions.length) {
           this.renderQuestion();
         } else {
-          // Area Completed!
           this.completeArea();
         }
       }
 
       completeArea() {
         sound.playVictory();
-        alert(`🎉 Tahniah! Kamu telah menyelesaikan Kawasan ${this.currentArea}!`);
+        alert(`🎉 Congratulations! You have completed STAGE ${this.currentArea}!`);
 
         const badgeMap = {
-          1: '⭐ Penjejak Nisbah',
-          2: '⭐ Wira Pemudah',
-          3: '⭐ Pakar Nisbah',
-          4: '⭐ Pejuang Bandar',
-          5: '🏆 Master Nisbah'
+          1: '⭐ Ratio Rookie',
+          2: '⭐ Simplifying Hero',
+          3: '⭐ Number Explorer',
+          4: '⭐ Ratio Champion',
+          5: '🏆 Ratio Master'
         };
 
         if (!this.badges.includes(badgeMap[this.currentArea])) {
           this.badges.push(badgeMap[this.currentArea]);
         }
 
-        // Unlock next area
         if (this.currentArea < 5 && !this.unlockedAreas.includes(this.currentArea + 1)) {
           this.unlockedAreas.push(this.currentArea + 1);
         }
@@ -1959,11 +1955,10 @@
         document.getElementById('report-accuracy').innerText = `${accuracy}%`;
         document.getElementById('report-badge-count').innerText = `${this.badges.length} / 5`;
 
-        // Render Badges
         const badgesContainer = document.getElementById('badges-container');
         badgesContainer.innerHTML = '';
         if (this.badges.length === 0) {
-          badgesContainer.innerHTML = '<span style="color:#64748b; font-size:0.9rem;">Belum ada lencana diraih. Selesaikan kawasan di peta!</span>';
+          badgesContainer.innerHTML = '<span style="color:#64748b; font-size:0.9rem;">No badges earned yet. Complete stages on the map!</span>';
         } else {
           this.badges.forEach(b => {
             const span = document.createElement('span');
@@ -1973,26 +1968,24 @@
           });
         }
 
-        // Teacher Summary Breakdown
         const teacherText = document.getElementById('teacher-summary-text');
         teacherText.innerHTML = `
-          Pengembara <strong>${this.nickname}</strong> telah menjawab <strong>${this.stats.totalCorrect}</strong> daripada <strong>${this.stats.totalAttempted}</strong> soalan dengan ketepatan <strong>${accuracy}%</strong>.<br>
-          ${accuracy >= 80 ? '🌟 Murid menunjukkan pemahaman relasional yang sangat kukuh dalam mewakilkan dan mempermudahkan nisbah dua kuantiti.' : '💡 Murid disyorkan membuat sedikit latih tubi tambahan pada bahagian pembahagi sepunya.'}
+          Explorer <strong>${this.nickname}</strong> answered <strong>${this.stats.totalCorrect}</strong> out of <strong>${this.stats.totalAttempted}</strong> questions with an accuracy of <strong>${accuracy}%</strong>.<br>
+          ${accuracy >= 80 ? '🌟 Pupil demonstrates strong relational understanding in representing and simplifying ratios.' : '💡 Additional practice recommended on finding greatest common divisors.'}
         `;
 
         const diffContainer = document.getElementById('difficult-questions-list');
         if (this.stats.difficultQuestions.length > 0) {
-          diffContainer.innerHTML = '<strong>Soalan yang memerlukan perhatian/bimbingan:</strong><br>• ' + this.stats.difficultQuestions.slice(0, 3).join('<br>• ');
+          diffContainer.innerHTML = '<strong>Questions requiring attention:</strong><br>• ' + this.stats.difficultQuestions.slice(0, 3).join('<br>• ');
         } else {
-          diffContainer.innerHTML = '✨ Tiada masalah dikesan! Murid menjawab soalan dengan lancar.';
+          diffContainer.innerHTML = '✨ Excellent performance! All questions answered smoothly.';
         }
 
-        // Show Certificate if Master Badge Earned or Level 5 Completed
         const certWrapper = document.getElementById('certificate-wrapper');
-        if (this.badges.includes('🏆 Master Nisbah') || this.unlockedAreas.includes(5)) {
+        if (this.badges.includes('🏆 Ratio Master') || this.unlockedAreas.includes(5)) {
           certWrapper.style.display = 'block';
           document.getElementById('cert-player-name').innerText = this.nickname;
-          document.getElementById('cert-date').innerText = new Date().toLocaleDateString('ms-MY');
+          document.getElementById('cert-date').innerText = new Date().toLocaleDateString('en-US');
         } else {
           certWrapper.style.display = 'none';
         }
@@ -2011,13 +2004,13 @@
         resultBox.style.display = 'block';
         resultBox.innerHTML = `
           <div style="font-size:1.1rem; color:#0369a1; font-weight:bold; margin-bottom:6px;">
-            Nisbah Asal: ${num1} : ${num2}
+            Original Ratio: ${num1} : ${num2}
           </div>
           <div style="font-size:1rem; color:#334155;">
-            Pembahagi Sepunya Terbesar (FSTB) = <strong>${commonDivisor}</strong>
+            Greatest Common Divisor (GCD) = <strong>${commonDivisor}</strong>
           </div>
           <div style="font-size:1.3rem; color:#059669; font-weight:bold; margin-top:8px;">
-            Nisbah Termudah = ${simpleA} : ${simpleB}
+            Simplest Form = ${simpleA} : ${simpleB}
           </div>
         `;
       }
@@ -2035,7 +2028,6 @@
       }
     }
 
-    /* INITIALIZE GAME ENGINE ON LOAD */
     const game = new GameEngine();
     window.addEventListener('DOMContentLoaded', () => {
       game.init();
