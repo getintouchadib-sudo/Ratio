@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengembaraan Nisbah: Misteri Kota Nisbah (Tahun 6)</title>
+  <style>
+    /* CSS RESET & VARIABLES */
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --success: #10b981;
+      --danger: #ef4444;
+      --bg-dark: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text-dark: #1e293b;
+      --text-light: #f8fafc;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', 'Segoe UI', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      padding: 10px;
+    }
+
+    /* CONTAINER & RESPONSIVE LAYOUT */
+    #app-container {
+      width: 100%;
+      max-width: 1000px;
+      min-height: 680px;
+      background: #f1f5f9;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid #818cf8;
+    }
+
+    /* TOP HEADER BAR */
+    header {
+      background: linear-gradient(90deg, #312e81, #4f46e5);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .brand-icon {
+      font-size: 1.8rem;
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+    }
+
+    .controls-bar {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
+    }
+
+    /* SCREEN VIEWS */
+    .screen {
+      display: none;
+      flex: 1;
+      padding: 24px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease-out forwards;
+      overflow-y: auto;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* BUTTON STYLES */
+    .btn {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background: #10b981;
+      color: white;
+    }
+    .btn-primary:hover { background: #059669; }
+
+    .btn-accent {
+      background: #f59e0b;
+      color: white;
+    }
+    .btn-accent:hover { background: #d97706; }
+
+    .btn-secondary {
+      background: #6366f1;
+      color: white;
+    }
+    .btn-secondary:hover { background: #4f46e5; }
+
+    .btn-outline {
+      background: white;
+      color: #3730a3;
+      border: 2px solid #818cf8;
+      box-shadow: 0 4px 0 #c7d2fe;
+    }
+    .btn-outline:hover { background: #e0e7ff; }
+
+    .btn-large {
+      font-size: 1.3rem;
+      padding: 16px 36px;
+      border-radius: 20px;
+    }
+
+    /* START SCREEN */
+    .hero-title {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #312e81;
+      margin-bottom: 12px;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #475569;
+      text-align: center;
+      max-width: 650px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      color: #312e81;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .input-field {
+      padding: 12px 18px;
+      font-size: 1.1rem;
+      border: 3px solid #cbd5e1;
+      border-radius: 12px;
+      text-align: center;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #6366f1;
+    }
+
+    .start-menu-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    /* MAP SCREEN */
+    .map-container {
+      width: 100%;
+      max-width: 850px;
+      background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 100%);
+      border-radius: 20px;
+      padding: 24px;
+      border: 3px dashed #0284c7;
+      position: relative;
+    }
+
+    .map-title {
+      text-align: center;
+      color: #0369a1;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .map-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .map-node {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      border: 3px solid #cbd5e1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .map-node.unlocked {
+      border-color: #10b981;
+      background: #f0fdf4;
+    }
+
+    .map-node.unlocked:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .map-node.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background: #f1f5f9;
+      filter: grayscale(80%);
+    }
+
+    .map-node.active-current {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    }
+
+    .node-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 18px;
+    }
+
+    .unlocked .node-number { background: #10b981; }
+    .active-current .node-number { background: #f59e0b; }
+
+    .node-details {
+      flex: 1;
+    }
+
+    .node-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1e293b;
+    }
+
+    .node-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .node-badge {
+      font-size: 1.8rem;
+      margin-left: 10px;
+    }
+
+    /* GAMEPLAY CARDS */
+    .game-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      width: 100%;
+      max-width: 880px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 3px solid #cbd5e1;
+      position: relative;
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    .level-badge {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .question-text {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #1e293b;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* VISUAL OBJECT DISPLAY */
+    .visual-box {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      align-items: center;
+      min-height: 140px;
+    }
+
+    .object-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      padding: 12px 18px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+    }
+
+    .group-label {
+      font-weight: bold;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .items-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      max-width: 220px;
+      justify-content: center;
+    }
+
+    .item-icon {
+      font-size: 2rem;
+      transition: transform 0.2s;
+    }
+
+    .item-icon:hover {
+      transform: scale(1.2);
+    }
+
+    /* OPTIONS & INTERACTIVE ELEMENTS */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      width: 100%;
+    }
+
+    .option-btn {
+      background: #f8fafc;
+      border: 3px solid #cbd5e1;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .option-btn:hover {
+      border-color: #6366f1;
+      background: #e0e7ff;
+      transform: translateY(-2px);
+    }
+
+    .option-btn.selected-correct {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .option-btn.selected-wrong {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    /* STEP BY STEP DIVISOR SELECTION INTERFACE */
+    .divisor-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      background: #eff6ff;
+      padding: 16px;
+      border-radius: 16px;
+      border: 2px solid #bfdbfe;
+    }
+
+    .ratio-display-big {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a8a;
+      letter-spacing: 2px;
+    }
+
+    .divisor-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-divisor {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: white;
+      border: 2px solid #3b82f6;
+      color: #1d4ed8;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-divisor:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* FEEDBACK AREA */
+    .feedback-box {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .feedback-box.correct {
+      display: block;
+      background: #d1fae5;
+      border: 2px solid #34d399;
+      color: #065f46;
+    }
+
+    .feedback-box.wrong {
+      display: block;
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      color: #92400e;
+    }
+
+    /* LEARNING & DISCOVERY DEMO */
+    .discovery-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .grouping-visual {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 16px;
+      border: 2px dashed #94a3b8;
+    }
+
+    .group-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .group-clusters {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cluster {
+      border: 2px solid #cbd5e1;
+      padding: 8px;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* MODAL POPUPS */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.75);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 700px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: scaleUp 0.3s ease-out;
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      color: #312e81;
+      font-weight: bold;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #64748b;
+    }
+
+    /* CERTIFICATE STYLES */
+    .certificate-card {
+      background: #fffdf0;
+      border: 12px double #d97706;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      color: #451a03;
+      margin-top: 15px;
+    }
+
+    .cert-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #92400e;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cert-name {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #b45309;
+      margin: 15px 0;
+      border-bottom: 2px solid #d97706;
+      display: inline-block;
+      padding: 0 20px;
+    }
+
+    /* TOGGLE PAIR MODE & CITIZENSHIP BADGES */
+    .pair-toggle-box {
+      background: #e0e7ff;
+      border: 2px solid #818cf8;
+      border-radius: 14px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    /* RESPONSIVE DESIGN ADJUSTMENTS */
+    @media (max-width: 640px) {
+      .hero-title { font-size: 1.6rem; }
+      .brand-title { display: none; }
+      .stats-bar { gap: 8px; font-size: 0.85rem; padding: 4px 10px; }
+      .btn-large { font-size: 1.1rem; padding: 12px 24px; }
+      .ratio-display-big { font-size: 1.7rem; }
+      .visual-box { gap: 12px; padding: 12px; }
+      .item-icon { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+    <!-- TOP NAVBAR / HEADER -->
+    <header>
+      <div class="brand">
+        <span class="brand-icon">🏰</span>
+        <span class="brand-title">Kota Nisbah</span>
+      </div>
+
+      <div class="stats-bar" id="stats-bar" style="display: none;">
+        <div class="stat-item" title="Bintang Terkumpul">
+          <span>⭐</span> <span id="stat-stars">0</span>
+        </div>
+        <div class="stat-item" title="Syiling Nisbah">
+          <span>🪙</span> <span id="stat-coins">0</span>
+        </div>
+        <div class="stat-item" title="Nyawa">
+          <span>❤️</span> <span id="stat-lives">3</span>
+        </div>
+        <div class="stat-item" title="Mod">
+          <span id="stat-mode-badge" style="background:#4338ca; padding:2px 8px; border-radius:10px; font-size:0.8rem;">Solo</span>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <button class="btn-icon" id="btn-sound-toggle" title="Bunyi (Buka/Tutup)">🔊</button>
+        <button class="btn-icon" id="btn-info" title="Maklumat & AI Acknowledgement">ℹ️</button>
+      </div>
+    </header>
+
+    <!-- 1. START SCREEN -->
+    <div id="screen-start" class="screen active">
+      <div style="text-align: center; margin-bottom: 15px;">
+        <span style="font-size: 4rem;">🧭</span>
+      </div>
+      <h1 class="hero-title">Pengembaraan Nisbah: Misteri Kota Nisbah</h1>
+      <p class="hero-subtitle">
+        Selamat datang, Pengembara Muda! Kota Nisbah berada dalam bahaya kehilangan keseimbangan.
+        Selesaikan cabaran nisbah dua kuantiti dalam bentuk termudah untuk membuka pintu istana dan merangkul gelaran <strong>Master Nisbah</strong>!
+      </p>
+
+      <div class="input-group">
+        <label for="player-nickname">Nama / Gelaran Pengembara:</label>
+        <input type="text" id="player-nickname" class="input-field" placeholder="Contoh: Amir / Sarah" maxlength="15" value="Pengembara">
+      </div>
+
+      <div class="pair-toggle-box" style="max-width: 320px;">
+        <span style="font-weight: bold; color: #3730a3; font-size:0.95rem;">👥 Mod Berpasangan (2 Murid)</span>
+        <input type="checkbox" id="pair-mode-checkbox" style="width: 20px; height: 20px; cursor: pointer;">
+      </div>
+
+      <div class="start-menu-btns">
+        <button class="btn btn-primary btn-large" id="btn-start-game">
+          🚀 Mula Pengembaraan
+        </button>
+        <button class="btn btn-outline" id="btn-how-to-play">
+          ❓ Cara Bermain
+        </button>
+        <button class="btn btn-outline" id="btn-objectives">
+          🎯 Objektif Pembelajaran (DSKP)
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. LEARNING / DISCOVERY SCREEN -->
+    <div id="screen-learn" class="screen">
+      <h2 style="color: #312e81; margin-bottom: 12px; text-align: center;">💡 Bengkel Penemuan Nisbah</h2>
+      <div class="discovery-card">
+        <p style="font-size: 1.1rem; text-align: center; color: #334155;">
+          Mari kita fahami bagaimana nisbah dipermudahkan secara visual!
+        </p>
+
+        <div class="grouping-visual" id="discovery-visual-container">
+          <div class="group-box">
+            <span class="group-label">🔴 Bola Merah: 6</span>
+            <div class="group-clusters" id="red-clusters">
+              <div class="cluster">🔴🔴</div>
+              <div class="cluster">🔴🔴</div>
+              <div class="cluster">🔴🔴</div>
+            </div>
+          </div>
+
+          <div style="font-size: 2rem; font-weight: bold; color: #6366f1;">:</div>
+
+          <div class="group-box">
+            <span class="group-label">🔵 Bola Biru: 9</span>
+            <div class="group-clusters" id="blue-clusters">
+              <div class="cluster">🔵🔵🔵</div>
+              <div class="cluster">🔵🔵🔵</div>
+              <div class="cluster">🔵🔵🔵</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #e0e7ff; padding: 16px; border-radius: 14px; text-align: center; border: 2px solid #818cf8;">
+          <p style="font-size: 1.2rem; font-weight: bold; color: #1e1b4b; margin-bottom: 8px;">
+            Nisbah Asal: <span style="color: #ef4444;">6</span> : <span style="color: #2563eb;">9</span>
+          </p>
+          <p style="font-size: 1rem; color: #334155; margin-bottom: 10px;">
+            Kedua-dua nombor <strong>6</strong> dan <strong>9</strong> boleh dibahagi dengan <strong>3</strong>!
+          </p>
+          <div style="display: flex; justify-content: center; gap: 20px; font-weight: bold; font-size: 1.1rem; color: #047857;">
+            <div>6 ÷ 3 = 2</div>
+            <div>9 ÷ 3 = 3</div>
+          </div>
+          <p style="font-size: 1.3rem; font-weight: bold; color: #059669; margin-top: 10px;">
+            Nisbah Termudah: 2 : 3
+          </p>
+        </div>
+
+        <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 14px; border-radius: 12px; font-size: 0.95rem; color: #78350f;">
+          🌟 <strong>Konsep Penting:</strong> "Nisbah termudah ialah nisbah yang tidak boleh dipermudahkan lagi dengan nombor bulat yang sama selain 1. Bilangan objek berubah mengikut kumpulan, tetapi <em>hubungan antara dua kuantiti tetap sama!</em>"
+        </div>
+
+        <div style="display: flex; justify-content: space-between; gap: 10px;">
+          <button class="btn btn-outline" id="btn-custom-ratio-tool">🎨 Cuba Nisbah Ciptaan Saya</button>
+          <button class="btn btn-primary" id="btn-proceed-to-map">🗺️ Pergi Ke Peta Kota Nisbah</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. GAME MAP SCREEN -->
+    <div id="screen-map" class="screen">
+      <div class="map-container">
+        <h2 class="map-title">🗺️ Peta Pengembaraan Kota Nisbah</h2>
+        <p style="text-align: center; color: #0284c7; margin-bottom: 16px; font-weight: 500;">
+          Pilih kawasan yang terbuka untuk memulakan cabaran!
+        </p>
+
+        <div class="map-grid">
+          <!-- Area 1 -->
+          <div class="map-node unlocked active-current" id="map-node-1" onclick="game.startArea(1)">
+            <div class="node-number">1</div>
+            <div class="node-details">
+              <div class="node-title">Desa Nisbah</div>
+              <div class="node-desc">Mewakilkan nisbah asas secara visual & gambar.</div>
+            </div>
+            <div class="node-badge" id="badge-area-1">⭐</div>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="map-node locked" id="map-node-2" onclick="game.startArea(2)">
+            <div class="node-number">2</div>
+            <div class="node-details">
+              <div class="node-title">Hutan Pemudahan</div>
+              <div class="node-desc">Langkah demi langkah memilih pembahagi sepunya.</div>
+            </div>
+            <div class="node-badge" id="badge-area-2">🔒</div>
+          </div>
+
+          <!-- Area 3 -->
+          <div class="map-node locked" id="map-node-3" onclick="game.startArea(3)">
+            <div class="node-number">3</div>
+            <div class="node-details">
+              <div class="node-title">Bandar Nombor</div>
+              <div class="node-desc">Cari nombor tersembunyi & nilai nisbah setara.</div>
+            </div>
+            <div class="node-badge" id="badge-area-3">🔒</div>
+          </div>
+
+          <!-- Area 4 -->
+          <div class="map-node locked" id="map-node-4" onclick="game.startArea(4)">
+            <div class="node-number">4</div>
+            <div class="node-details">
+              <div class="node-title">Menara Nisbah</div>
+              <div class="node-desc">Misi situasi kehidupan sebenar & harian.</div>
+            </div>
+            <div class="node-badge" id="badge-area-4">🔒</div>
+          </div>
+
+          <!-- Area 5 -->
+          <div class="map-node locked" id="map-node-5" onclick="game.startArea(5)">
+            <div class="node-number">5</div>
+            <div class="node-details">
+              <div class="node-title">Kastil Master Nisbah</div>
+              <div class="node-desc">Cabaran akhir: Peniupan minda & analisis kesilapan.</div>
+            </div>
+            <div class="node-badge" id="badge-area-5">🏆</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+          <button class="btn btn-outline" id="btn-back-to-learn">💡 Bengkel Penemuan</button>
+          <button class="btn btn-accent" id="btn-view-report-direct">📊 Laporan Pencapaian</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. GAMEPLAY PLAY AREA SCREEN -->
+    <div id="screen-gameplay" class="screen">
+      <div class="game-card">
+        <div class="question-header">
+          <span class="level-badge" id="game-level-title">Kawasan 1: Desa Nisbah</span>
+          <span style="font-weight: bold; color: #64748b;" id="game-question-tracker">Soalan 1 / 5</span>
+        </div>
+
+        <div class="question-text" id="game-question-text">
+          Apakah nisbah epal kepada oren?
+        </div>
+
+        <!-- VISUAL OBJECT DISPLAY BOX -->
+        <div class="visual-box" id="game-visual-box">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- INTERACTIVE STEP-BY-STEP DIVISOR CONTAINER (For Level 2 / Step simplification) -->
+        <div class="divisor-container" id="divisor-container" style="display: none;">
+          <p style="font-weight: bold; color: #1e3a8a; font-size: 0.95rem;">
+            Pilih Nombor Pembahagi Sepunya Untuk Membahagikan Kedua-dua Kuantiti:
+          </p>
+          <div class="ratio-display-big" id="interactive-ratio-display">12 : 18</div>
+          <div class="divisor-buttons" id="divisor-buttons-list">
+            <!-- Buttons rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- OPTIONS GRID -->
+        <div class="options-grid" id="game-options-grid">
+          <!-- Options rendered dynamically -->
+        </div>
+
+        <!-- FEEDBACK BOX -->
+        <div class="feedback-box" id="game-feedback-box">
+          <div id="feedback-content">Betul! Jawapan kamu tepat sekali.</div>
+        </div>
+
+        <!-- BOTTOM ACTION BUTTONS -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+          <button class="btn btn-outline" id="btn-hint" style="padding: 8px 16px; font-size: 0.95rem;">💡 Petunjuk</button>
+          <button class="btn btn-primary" id="btn-next-question" style="display: none;">Seterusnya ➡️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SUMMARY & REPORT SCREEN -->
+    <div id="screen-report" class="screen">
+      <div class="game-card" style="max-width: 750px;">
+        <h2 style="text-align: center; color: #312e81; font-size: 1.8rem;">🎉 Laporan Prestasi Pengembara</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 10px;">
+          <div style="background: #f0fdf4; border: 2px solid #86efac; padding: 12px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.85rem; color: #166534;">Nama Pengembara</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #14532d;" id="report-player-name">Pengembara</div>
+          </div>
+          <div style="background: #f0f9ff; border: 2px solid #7dd3fc; padding: 12px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.85rem; color: #075985;">Jumlah Bintang</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #0369a1;" id="report-stars">0 ⭐</div>
+          </div>
+          <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 12px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.85rem; color: #92400e;">Skor Ketepatan</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #b45309;" id="report-accuracy">0%</div>
+          </div>
+          <div style="background: #faf5ff; border: 2px solid #d8b4fe; padding: 12px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.85rem; color: #6b21a8;">Lencana Diraih</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #581c87;" id="report-badge-count">0 / 4</div>
+          </div>
+        </div>
+
+        <!-- BADGES EARNED SECTION -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 14px;">
+          <h4 style="color: #334155; margin-bottom: 10px;">🏅 Lencana Pencapaian Kamu:</h4>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;" id="badges-container">
+            <!-- Badges rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- TEACHER SUMMARY BREAKDOWN -->
+        <div style="background: #eef2ff; border: 2px solid #c7d2fe; padding: 16px; border-radius: 14px;">
+          <h4 style="color: #3730a3; margin-bottom: 8px;">👨‍🏫 Ringkasan Untuk Guru / Ibu Bapa:</h4>
+          <p style="font-size: 0.95rem; color: #334155; line-height: 1.5;" id="teacher-summary-text">
+            Murid telah menunjukkan pemahaman asas dalam mewakilkan nisbah dua kuantiti.
+          </p>
+          <div id="difficult-questions-list" style="margin-top: 8px; font-size: 0.9rem; color: #991b1b;"></div>
+        </div>
+
+        <!-- CERTIFICATE CONTAINER IF MASTER BADGE EARNED -->
+        <div id="certificate-wrapper" style="display: none;">
+          <div class="certificate-card">
+            <div style="font-size: 2.5rem;">📜</div>
+            <div class="cert-title">SIJIL MASTER NISBAH</div>
+            <p>Dengan ini diperakukan bahawa</p>
+            <div class="cert-name" id="cert-player-name">Pengembara</div>
+            <p>Telah berjaya menguasai Kemahiran DSKP 7.2.1: <strong>Mewakilkan Nisbah Dua Kuantiti Dalam Bentuk Termudah</strong> dengan cemerlang di Kota Nisbah!</p>
+            <div style="margin-top: 15px; font-size: 0.85rem; color: #78350f;">
+              Tarikh: <span id="cert-date"></span> | Anugerah: Kota Nisbah Year 6 Math Explorer
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" id="btn-report-continue">🗺️ Kembali Ke Peta</button>
+          <button class="btn btn-accent" onclick="window.print()">🖨️ Cetak Sijil / Laporan</button>
+          <button class="btn btn-outline" id="btn-restart-game">🔄 Mula Semula Game</button>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- END APP CONTAINER -->
+
+  <!-- MODAL 1: HOW TO PLAY -->
+  <div class="modal-overlay" id="modal-how-to-play">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">📖 Cara Bermain</h3>
+        <button class="close-modal" onclick="game.closeModals()">&times;</button>
+      </div>
+      <div style="line-height: 1.6; color: #334155;">
+        <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <li><strong>Mula Pengembaraan:</strong> Masukkan nama kamu dan pilih kawasan pada peta Kota Nisbah.</li>
+          <li><strong>Kawasan 1 (Desa Nisbah):</strong> Kenal pasti nisbah dua kuantiti daripada gambar objek.</li>
+          <li><strong>Kawasan 2 (Hutan Pemudahan):</strong> Pilih nombor pembahagi sepunya untuk membahagikan kuantiti langkah demi langkah.</li>
+          <li><strong>Kawasan 3 (Bandar Nombor):</strong> Cari nombor tersembunyi yang hilang pada nisbah setara.</li>
+          <li><strong>Kawasan 4 (Menara Nisbah):</strong> Selesaikan misi situasi harian di sekolah dan rumah.</li>
+          <li><strong>Kawasan 5 (Kastil Master Nisbah):</strong> Cabaran akhir termasuk soalan penaakulan dan analisis kesilapan.</li>
+          <li><strong>Ganjaran:</strong> Kumpul bintang ⭐, syiling 🪙, dan raih lencana 🏆 Master Nisbah!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: LEARNING OBJECTIVES & DSKP -->
+  <div class="modal-overlay" id="modal-objectives">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🎯 Objektif & DSKP Matematik</h3>
+        <button class="close-modal" onclick="game.closeModals()">&times;</button>
+      </div>
+      <div style="line-height: 1.6; color: #334155; font-size: 0.95rem;">
+        <p><strong>Subjek:</strong> Matematik Sekolah Rendah (KSSR Semakan)</p>
+        <p><strong>Tahun:</strong> Tahun 6</p>
+        <p><strong>Tajuk:</strong> 7.2 Nisbah</p>
+        <p><strong>Standard Pembelajaran:</strong> 7.2.1 Mewakilkan nisbah dua kuantiti dalam bentuk termudah.</p>
+        <p><strong>Catatan DSKP:</strong> Nisbah hanya melibatkan nombor bulat.</p>
+        <hr style="margin: 12px 0; border: none; border-top: 1px solid #e2e8f0;">
+        <h4 style="color: #312e81; margin-bottom: 6px;">💡 Pendekatan Pedagogi:</h4>
+        <p>
+          Permainan ini direka berasaskan pemahaman relasional (relational understanding). Murid belajar <em>MENGAPA</em> nisbah boleh dipermudahkan melalui pengelompokan visual dan pembahagi sepunya, bukan sekadar menghafal langkah kerja.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: INFO, TASK 2 ALIGNMENT, NPDL 6CS & AI ACKNOWLEDGEMENT -->
+  <div class="modal-overlay" id="modal-info">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">ℹ️ Maklumat Sumber & Pengiktirafan AI</h3>
+        <button class="close-modal" onclick="game.closeModals()">&times;</button>
+      </div>
+      <div style="line-height: 1.6; color: #334155; font-size: 0.9rem;">
+        <h4 style="color: #312e81; margin-bottom: 4px;">📌 Pengenalan Sumber Digital</h4>
+        <p style="margin-bottom: 10px;">
+          "Pengembaraan Nisbah: Misteri Kota Nisbah" ialah aplikasi permainan interaktif yang dibina khas untuk murid Tahun 6 di Malaysia bagi menguasai tajuk Nisbah dalam bentuk termudah.
+        </p>
+
+        <h4 style="color: #312e81; margin-bottom: 4px;">🌟 Integrasi NPDL / 6C:</h4>
+        <ul style="padding-left: 20px; margin-bottom: 10px;">
+          <li><strong>Communication:</strong> Murid membaca situasi matematik dan memilih penerangan jawapan yang tepat.</li>
+          <li><strong>Critical Thinking:</strong> Murid menganalisis soalan penaakulan dan memilih pembahagi sepunya yang betul.</li>
+          <li><strong>Collaboration:</strong> Ciri 'Mod Berpasangan' membolehkan dua murid berdiskus bersama sebelum menjawab.</li>
+          <li><strong>Creativity:</strong> Alat visual interaktif membimbing murid mereka bentuk nisbah sendiri.</li>
+          <li><strong>Character:</strong> Sistem ganjaran positif membina ketabahan (perseverance) tanpa penalti yang mengecewakan.</li>
+          <li><strong>Citizenship:</strong> Membudayakan penggunaan teknologi digital secara beretika dan bertanggungjawab.</li>
+        </ul>
+
+        <h4 style="color: #312e81; margin-bottom: 4px;">🤖 Pengiktirafan Penggunaan Alat AI (AI Acknowledgement)</h4>
+        <p style="margin-bottom: 6px;">
+          Bagi tujuan pematuhan integriti akademik dan ketulenan tugasan:
+        </p>
+        <ul style="padding-left: 20px; margin-bottom: 10px; background: #f8fafc; padding: 10px 20px; border-radius: 8px;">
+          <li><strong>Reka Bentuk Permainan & Pedagogi:</strong> Dibina berpandukan DSKP Matematik Tahun 6 KPM.</li>
+          <li><strong>Generasi Kod & Pembantu Pembangunan:</strong> AI (Anthropic Claude / Jules AI) digunakan untuk membantu penjanaan struktur awal HTML/CSS/JS, penyesuaian sintaks Web Audio API synth, dan penyusunan soalan bank matematik.</li>
+          <li><strong>Ketulenan & Bebas Hak Cipta:</strong> Tiada grafik bertanda hak cipta digunakan; semua elemen visual menggunakan CSS, emojicon percuma, dan Web Audio API teras.</li>
+        </ul>
+
+        <h4 style="color: #312e81; margin-bottom: 4px;">📜 Rujukan & Hak Cipta</h4>
+        <p>Kementerian Pendidikan Malaysia (KPM) - Dokumen Standard Kurikulum dan Pentaksiran (DSKP) Matematik Tahun 6.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: CUSTOM RATIO TOOL (CREATIVITY / EXPLORATION) -->
+  <div class="modal-overlay" id="modal-custom-tool">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🎨 Alat Visual Nisbah Ciptaan Saya</h3>
+        <button class="close-modal" onclick="game.closeModals()">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p style="text-align: center; color: #475569;">
+          Pilih bilangan objek untuk membina nisbah kamu sendiri dan lihat bagaimana ia dipermudahkan!
+        </p>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; background: #f1f5f9; padding: 16px; border-radius: 14px;">
+          <div style="text-align: center;">
+            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Epal 🍎</label>
+            <input type="number" id="custom-num-1" min="1" max="24" value="8" style="width: 70px; padding: 8px; font-size: 1.1rem; text-align: center; border-radius: 8px; border: 2px solid #cbd5e1;">
+          </div>
+          <div style="font-size: 2rem; font-weight: bold; color: #6366f1;">:</div>
+          <div style="text-align: center;">
+            <label style="font-weight: bold; display: block; margin-bottom: 6px; color: #1e293b;">Oren 🍊</label>
+            <input type="number" id="custom-num-2" min="1" max="24" value="12" style="width: 70px; padding: 8px; font-size: 1.1rem; text-align: center; border-radius: 8px; border: 2px solid #cbd5e1;">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="game.calculateCustomRatio()">✨ Permudahkan Nisbah Ini</button>
+
+        <div id="custom-ratio-result" style="display: none; background: #e0f2fe; border: 2px solid #38bdf8; padding: 16px; border-radius: 14px; text-align: center;">
+          <!-- Result injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* WEB AUDIO API SYNTHESIZER FOR SOUND EFFECTS */
+    class SoundManager {
+      constructor() {
+        this.ctx = null;
+        this.muted = false;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
+        }
+      }
+
+      playTone(freq, type = 'sine', duration = 0.15, gainVal = 0.1) {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {
+          console.log("Audio play error", e);
+        }
+      }
+
+      playClick() {
+        this.playTone(400, 'sine', 0.08, 0.08);
+      }
+
+      playCorrect() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+          setTimeout(() => {
+            this.playTone(freq, 'triangle', 0.15, 0.12);
+          }, idx * 90);
+        });
+      }
+
+      playWrong() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        [280, 220].forEach((freq, idx) => {
+          setTimeout(() => {
+            this.playTone(freq, 'sawtooth', 0.2, 0.1);
+          }, idx * 120);
+        });
+      }
+
+      playVictory() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        const notes = [440, 554.37, 659.25, 880];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => {
+            this.playTone(freq, 'sine', 0.25, 0.15);
+          }, idx * 140);
+        });
+      }
+    }
+
+    const sound = new SoundManager();
+
+    /* HELPER: GREATEST COMMON DIVISOR */
+    function gcd(a, b) {
+      return b === 0 ? a : gcd(b, a % b);
+    }
+
+    /* GAME DATA & QUESTION BANK (30+ UNIQUE QUESTIONS) */
+    const QUESTION_BANK = {
+      1: [ // AREA 1: Visual Matching & Ratio Representation
+        {
+          id: 'a1_1',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan epal kepada oren?',
+          itemsA: { icon: '🍎', count: 4, label: 'Epal' },
+          itemsB: { icon: '🍊', count: 6, label: 'Oren' },
+          options: ['4 : 6', '6 : 4', '4 : 10', '2 : 5'],
+          correct: '4 : 6',
+          explanation: 'Terdapat 4 epal dan 6 oren. Jadi, nisbah epal kepada oren ialah 4 : 6.',
+          hint: 'Kira bilangan epal terlebih dahulu, kemudian bilangan oren.'
+        },
+        {
+          id: 'a1_2',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan bola merah kepada bola biru?',
+          itemsA: { icon: '🔴', count: 3, label: 'Merah' },
+          itemsB: { icon: '🔵', count: 9, label: 'Biru' },
+          options: ['3 : 9', '9 : 3', '3 : 12', '1 : 4'],
+          correct: '3 : 9',
+          explanation: 'Terdapat 3 bola merah dan 9 bola biru. Nisbahnya ialah 3 : 9.',
+          hint: 'Kira bilangan bola merah diikuti dengan bola biru.'
+        },
+        {
+          id: 'a1_3',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan bintang kuning kepada bintang hijau?',
+          itemsA: { icon: '⭐', count: 5, label: 'Kuning' },
+          itemsB: { icon: '🌟', count: 10, label: 'Hijau' },
+          options: ['5 : 10', '10 : 5', '5 : 15', '1 : 3'],
+          correct: '5 : 10',
+          explanation: 'Ada 5 bintang kuning dan 10 bintang hijau. Nisbahnya ditulis sebagai 5 : 10.',
+          hint: 'Bintang kuning berada di sebelah kiri dan bintang hijau di sebelah kanan.'
+        },
+        {
+          id: 'a1_4',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan buku merah kepada pensel hijau?',
+          itemsA: { icon: '📕', count: 6, label: 'Buku' },
+          itemsB: { icon: '✏️', count: 8, label: 'Pensel' },
+          options: ['6 : 8', '8 : 6', '6 : 14', '3 : 7'],
+          correct: '6 : 8',
+          explanation: 'Bilangan buku ialah 6 dan pensel ialah 8. Nisbahnya ialah 6 : 8.',
+          hint: 'Pastikan susunan nisbah mengikut urutan soalan: Buku kepada Pensel.'
+        },
+        {
+          id: 'a1_5',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan kereta merah kepada bas biru?',
+          itemsA: { icon: '🚗', count: 2, label: 'Kereta' },
+          itemsB: { icon: '🚌', count: 6, label: 'Bas' },
+          options: ['2 : 6', '6 : 2', '2 : 8', '1 : 4'],
+          correct: '2 : 6',
+          explanation: 'Terdapat 2 kereta dan 6 bas. Nisbahnya ialah 2 : 6.',
+          hint: 'Kira kereta dulu (2), kemudian bas (6).'
+        },
+        {
+          id: 'a1_6',
+          type: 'visual',
+          question: 'Apakah nisbah bilangan kek cawan kepada daster donut?',
+          itemsA: { icon: '🧁', count: 8, label: 'Kek Cawan' },
+          itemsB: { icon: '🍩', count: 12, label: 'Donut' },
+          options: ['8 : 12', '12 : 8', '8 : 20', '2 : 5'],
+          correct: '8 : 12',
+          explanation: 'Terdapat 8 kek cawan dan 12 donut. Nisbahnya ialah 8 : 12.',
+          hint: 'Bilangan kek cawan ialah 8 dan donut ialah 12.'
+        }
+      ],
+
+      2: [ // AREA 2: Step-by-Step Simplification Using Common Divisors
+        {
+          id: 'a2_1',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 12 : 18 kepada bentuk termudah.',
+          startA: 12,
+          startB: 18,
+          divisors: [2, 3, 6],
+          targetA: 2,
+          targetB: 3,
+          explanation: '12 dan 18 kedua-duanya boleh dibahagi dengan 6. 12÷6=2 dan 18÷6=3. Nisbah termudah ialah 2 : 3.',
+          hint: 'Cari nombor yang boleh membahagi kedua-dua 12 dan 18 tanpa baki.'
+        },
+        {
+          id: 'a2_2',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 8 : 12 kepada bentuk termudah.',
+          startA: 8,
+          startB: 12,
+          divisors: [2, 4],
+          targetA: 2,
+          targetB: 3,
+          explanation: '8÷4 = 2 dan 12÷4 = 3. Maka, nisbah termudah ialah 2 : 3.',
+          hint: 'Pembahagi sepunya terbesar bagi 8 dan 12 ialah 4.'
+        },
+        {
+          id: 'a2_3',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 10 : 15 kepada bentuk termudah.',
+          startA: 10,
+          startB: 15,
+          divisors: [5],
+          targetA: 2,
+          targetB: 3,
+          explanation: '10÷5 = 2 dan 15÷5 = 3. Nisbah termudah ialah 2 : 3.',
+          hint: 'Nombor yang berakhir dengan 0 dan 5 boleh dibahagi dengan 5.'
+        },
+        {
+          id: 'a2_4',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 15 : 20 kepada bentuk termudah.',
+          startA: 15,
+          startB: 20,
+          divisors: [5],
+          targetA: 3,
+          targetB: 4,
+          explanation: '15÷5 = 3 dan 20÷5 = 4. Nisbah termudah ialah 3 : 4.',
+          hint: 'Bahagikan 15 dan 20 dengan 5.'
+        },
+        {
+          id: 'a2_5',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 18 : 24 kepada bentuk termudah.',
+          startA: 18,
+          startB: 24,
+          divisors: [2, 3, 6],
+          targetA: 3,
+          targetB: 4,
+          explanation: '18 dan 24 dibahagi 6 menghasilkan 3 : 4.',
+          hint: 'Cuba membahagikan dengan 6 untuk mendapat langkah terpantas.'
+        },
+        {
+          id: 'a2_6',
+          type: 'step_simplify',
+          question: 'Permudahkan nisbah 20 : 30 kepada bentuk termudah.',
+          startA: 20,
+          startB: 30,
+          divisors: [2, 5, 10],
+          targetA: 2,
+          targetB: 3,
+          explanation: 'Bahagikan 20 dan 30 dengan 10 untuk mendapat 2 : 3.',
+          hint: 'Kedua-dua nombor berakhir dengan 0, jadi boleh dibahagi dengan 10.'
+        }
+      ],
+
+      3: [ // AREA 3: Missing Numbers & Equivalent Ratios
+        {
+          id: 'a3_1',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 12 : 18 =  ?  : 3',
+          options: ['2', '3', '4', '6'],
+          correct: '2',
+          explanation: '18 ÷ 6 = 3. Maka, 12 ÷ 6 = 2. Jawapan yang betul ialah 2.',
+          hint: 'Perhatikan bagaimana 18 menjadi 3 (dibahagi 6). Lakukan perkara sama pada 12.'
+        },
+        {
+          id: 'a3_2',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 15 : 25 = 3 :  ? ',
+          options: ['4', '5', '6', '10'],
+          correct: '5',
+          explanation: '15 ÷ 5 = 3. Maka, 25 ÷ 5 = 5. Nombor tersembunyi ialah 5.',
+          hint: '15 dibahagi 5 menjadi 3. Bahagikan 25 dengan 5.'
+        },
+        {
+          id: 'a3_3',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 16 : 24 =  ?  : 3',
+          options: ['2', '4', '6', '8'],
+          correct: '2',
+          explanation: '24 ÷ 8 = 3. Maka 16 ÷ 8 = 2. Jawapan tersembunyi ialah 2.',
+          hint: '24 dibahagi dengan 8 mendapat 3. Bahagikan 16 dengan 8.'
+        },
+        {
+          id: 'a3_4',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 14 : 21 = 2 :  ? ',
+          options: ['3', '5', '7', '9'],
+          correct: '3',
+          explanation: '14 ÷ 7 = 2. Maka 21 ÷ 7 = 3. Jawapan tersembunyi ialah 3.',
+          hint: '14 dibahagi 7 mendapat 2. Bahagikan 21 dengan 7.'
+        },
+        {
+          id: 'a3_5',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 24 : 36 =  ?  : 3',
+          options: ['2', '3', '4', '6'],
+          correct: '2',
+          explanation: '36 ÷ 12 = 3. Maka 24 ÷ 12 = 2.',
+          hint: 'Bahagikan kedua-dua nombor dengan 12.'
+        },
+        {
+          id: 'a3_6',
+          type: 'missing_val',
+          question: 'Cari nombor yang tersembunyi: 9 : 12 = 3 :  ? ',
+          options: ['4', '5', '6', '8'],
+          correct: '4',
+          explanation: '9 ÷ 3 = 3. Maka 12 ÷ 3 = 4.',
+          hint: '9 dibahagi 3 menjadi 3. Bahagikan 12 dengan 3.'
+        }
+      ],
+
+      4: [ // AREA 4: Real-Life Missions & Situational Questions
+        {
+          id: 'a4_1',
+          type: 'context',
+          question: 'Di dalam sebuah bakul terdapat 12 epal dan 16 oren. Apakah nisbah epal kepada oren dalam bentuk termudah?',
+          itemsA: { icon: '🍎', count: 12, label: 'Epal (12)' },
+          itemsB: { icon: '🍊', count: 16, label: 'Oren (16)' },
+          options: ['3 : 4', '4 : 3', '12 : 16', '2 : 3'],
+          correct: '3 : 4',
+          explanation: '12 dan 16 kedua-duanya dibahagi dengan 4. 12÷4=3 dan 16÷4=4. Nisbah termudah ialah 3 : 4.',
+          hint: 'Cari nombor yang boleh membahagi 12 dan 16, iaitu 4.'
+        },
+        {
+          id: 'a4_2',
+          type: 'context',
+          question: 'Pasukan Bola Sepak Sekolah mempunyai 10 pemain lelaki dan 15 pemain perempuan. Apakah nisbah lelaki kepada perempuan dalam bentuk termudah?',
+          itemsA: { icon: '👦', count: 10, label: 'Lelaki (10)' },
+          itemsB: { icon: '👧', count: 15, label: 'Perempuan (15)' },
+          options: ['2 : 3', '3 : 2', '10 : 15', '1 : 2'],
+          correct: '2 : 3',
+          explanation: '10 ÷ 5 = 2 dan 15 ÷ 5 = 3. Nisbah termudah ialah 2 : 3.',
+          hint: 'Bahagikan kedua-dua kuantiti dengan 5.'
+        },
+        {
+          id: 'a4_3',
+          type: 'context',
+          question: 'Di dalam kotak alat tulis, terdapat 18 pensel biru dan 24 pensel merah. Apakah nisbah pensel biru kepada pensel merah dalam bentuk termudah?',
+          itemsA: { icon: '✏️', count: 18, label: 'Pensel Biru (18)' },
+          itemsB: { icon: '🖍️', count: 24, label: 'Pensel Merah (24)' },
+          options: ['3 : 4', '4 : 3', '2 : 3', '6 : 8'],
+          correct: '3 : 4',
+          explanation: '18 dan 24 boleh dibahagi dengan 6. 18÷6=3 dan 24÷6=4. Nisbah termudah ialah 3 : 4.',
+          hint: 'Bahagikan 18 dan 24 dengan pembahagi sepunya terbesar iaitu 6.'
+        },
+        {
+          id: 'a4_4',
+          type: 'context',
+          question: 'Puan Siti membuat minuman dengan mencampurkan 6 cawan kordial sirap dan 18 cawan air. Apakah nisbah kordial kepada air dalam bentuk termudah?',
+          itemsA: { icon: '🧃', count: 6, label: 'Kordial (6)' },
+          itemsB: { icon: '💧', count: 18, label: 'Air (18)' },
+          options: ['1 : 3', '3 : 1', '6 : 18', '2 : 6'],
+          correct: '1 : 3',
+          explanation: '6 ÷ 6 = 1 dan 18 ÷ 6 = 3. Nisbah termudah ialah 1 : 3.',
+          hint: 'Bahagikan kedua-dua nombor 6 dan 18 dengan 6.'
+        },
+        {
+          id: 'a4_5',
+          type: 'context',
+          question: 'Di taman sekolah terdapat 15 pokok bunga raya dan 20 pokok bunga kertas. Apakah nisbah pokok bunga raya kepada pokok bunga kertas dalam bentuk termudah?',
+          itemsA: { icon: '🌺', count: 15, label: 'Bunga Raya (15)' },
+          itemsB: { icon: '🌸', count: 20, label: 'Bunga Kertas (20)' },
+          options: ['3 : 4', '4 : 3', '3 : 5', '15 : 20'],
+          correct: '3 : 4',
+          explanation: '15÷5 = 3 dan 20÷5 = 4. Nisbah termudah ialah 3 : 4.',
+          hint: 'Bahagikan 15 dan 20 dengan 5.'
+        },
+        {
+          id: 'a4_6',
+          type: 'context',
+          question: 'Dalam Rumah Sukan Hang Tuah, terdapat 14 atlet lumba lari dan 21 atlet lompat tinggi. Apakah nisbah atlet lumba lari kepada lompat tinggi dalam bentuk termudah?',
+          itemsA: { icon: '🏃', count: 14, label: 'Lumba Lari (14)' },
+          itemsB: { icon: '🤸', count: 21, label: 'Lompat Tinggi (21)' },
+          options: ['2 : 3', '3 : 2', '7 : 14', '2 : 5'],
+          correct: '2 : 3',
+          explanation: '14 dan 21 boleh dibahagi dengan 7. 14÷7=2 dan 21÷7=3. Nisbah termudah ialah 2 : 3.',
+          hint: '14 dan 21 adalah gandaan 7. Bahagikan dengan 7.'
+        }
+      ],
+
+      5: [ // AREA 5: Final Master Challenge & Reasoning Error Analysis
+        {
+          id: 'a5_1',
+          type: 'reasoning',
+          question: 'Aiman mengatakan nisbah 8 : 12 = 4 : 6, tetapi rakannya Mei Lin mengatakan jawapan dalam bentuk termudah ialah 2 : 3. Siapakah yang betul?',
+          options: [
+            'Mei Lin betul, kerana 4 : 6 masih boleh dibahagi dengan 2 lagi menjadi 2 : 3.',
+            'Aiman betul, kerana 4 : 6 sudah cukuplah ringkas.',
+            'Kedua-duanya salah, nisbah termudah ialah 1 : 2.',
+            'Kedua-duanya betul tanpa sebarang perbezaan.'
+          ],
+          correct: 'Mei Lin betul, kerana 4 : 6 masih boleh dibahagi dengan 2 lagi menjadi 2 : 3.',
+          explanation: 'Mei Lin betul! Nisbah termudah mestilah tidak boleh dibahagi lagi dengan sebarang nombor bulat (selain 1). 4 dan 6 masih boleh dibahagi dengan 2.',
+          hint: 'Adakah nisbah 4 : 6 boleh dibahagi lagi dengan nombor lain?'
+        },
+        {
+          id: 'a5_2',
+          type: 'reasoning',
+          question: 'Adakah nisbah 9 : 15 berada dalam bentuk termudah? Mengapa?',
+          options: [
+            'Tidak, kerana kedua-duanya masih boleh dibahagi dengan 3 menjadi 3 : 5.',
+            'Ya, kerana 9 dan 15 adalah nombor ganjil.',
+            'Ya, kerana tiada nombor genap.',
+            'Tidak, nisbah termudah ialah 1 : 5.'
+          ],
+          correct: 'Tidak, kerana kedua-duanya masih boleh dibahagi dengan 3 menjadi 3 : 5.',
+          explanation: 'Tepat sekali! 9÷3=3 dan 15÷3=5. Maka bentuk termudah ialah 3 : 5.',
+          hint: 'Semak sama ada 9 dan 15 boleh dibahagi dengan 3.'
+        },
+        {
+          id: 'a5_3',
+          type: 'reasoning',
+          question: 'Siti menyatakan bahawa nisbah 5 : 7 tidak boleh dipermudahkan lagi. Adakah penyataan Siti betul?',
+          options: [
+            'Ya, betul. Kerana tiada nombor bulat selain 1 yang boleh membahagi 5 dan 7.',
+            'Salah, nisbah 5 : 7 sepatutnya menjadi 1 : 2.',
+            'Salah, 5 dan 7 boleh dibahagi dengan 5.',
+            'Tidak pasti.'
+          ],
+          correct: 'Ya, betul. Kerana tiada nombor bulat selain 1 yang boleh membahagi 5 dan 7.',
+          explanation: 'Syabas! 5 dan 7 adalah nombor perdana. Tiada pembahagi sepunya selain 1, jadi 5 : 7 sudah dalam bentuk termudah.',
+          hint: 'Adakah terdapat nombor bulat yang boleh membahagi 5 dan 7 serentak?'
+        },
+        {
+          id: 'a5_4',
+          type: 'reasoning',
+          question: 'Dua buah nisbah 12 : 16 dan 18 : 24 didakwa mewakilkan hubungan yang sama dalam bentuk termudah. Adakah ini benar?',
+          options: [
+            'Benar, kedua-duanya dipermudahkan menjadi 3 : 4.',
+            'Palsu, 12 : 16 ialah 2 : 3 manakala 18 : 24 ialah 3 : 4.',
+            'Palsu, nombornya berbeza jadi hubungannya tidak sama.',
+            'Tidak benar sama sekali.'
+          ],
+          correct: 'Benar, kedua-duanya dipermudahkan menjadi 3 : 4.',
+          explanation: 'Tepat! 12:16 (dibahagi 4) = 3:4. 18:24 (dibahagi 6) = 3:4. Kedua-duanya mempunyai nisbah termudah yang sama!',
+          hint: 'Permudahkan kedua-dua nisbah 12 : 16 dan 18 : 24.'
+        },
+        {
+          id: 'a5_5',
+          type: 'reasoning',
+          question: 'Apakah nisbah termudah bagi 24 : 32?',
+          options: ['3 : 4', '6 : 8', '12 : 16', '2 : 3'],
+          correct: '3 : 4',
+          explanation: '24 dan 32 dibahagi dengan pembahagi sepunya terbesar iaitu 8, menghasilkan 3 : 4.',
+          hint: 'Bahagikan 24 dan 32 dengan 8.'
+        },
+        {
+          id: 'a5_6',
+          type: 'reasoning',
+          question: 'Sebuah kotak mengandungi 16 guli merah, 24 guli hijau dan tiada guli lain. Nisbah guli merah kepada guli hijau dalam bentuk termudah ialah...',
+          options: ['2 : 3', '4 : 6', '8 : 12', '1 : 2'],
+          correct: '2 : 3',
+          explanation: '16 ÷ 8 = 2 dan 24 ÷ 8 = 3. Nisbah termudah ialah 2 : 3.',
+          hint: 'Bahagikan 16 dan 24 dengan 8.'
+        }
+      ]
+    };
+
+    /* GAME ENGINE STATE CLASS */
+    class GameEngine {
+      constructor() {
+        this.nickname = 'Pengembara';
+        this.isPairMode = false;
+        this.stars = 0;
+        this.coins = 0;
+        this.lives = 3;
+        this.currentArea = 1;
+        this.currentQuestionIndex = 0;
+        this.areaQuestions = [];
+        this.unlockedAreas = [1];
+        this.badges = [];
+        this.consecutiveMistakes = 0;
+
+        // Interactive Step Simplification State
+        this.stepCurrentA = 0;
+        this.stepCurrentB = 0;
+
+        // Statistics tracking
+        this.stats = {
+          totalAttempted: 0,
+          totalCorrect: 0,
+          difficultQuestions: []
+        };
+      }
+
+      init() {
+        this.bindEvents();
+        this.updateStatsUI();
+      }
+
+      bindEvents() {
+        document.getElementById('btn-sound-toggle').addEventListener('click', () => {
+          sound.muted = !sound.muted;
+          document.getElementById('btn-sound-toggle').innerText = sound.muted ? '🔇' : '🔊';
+        });
+
+        document.getElementById('btn-info').addEventListener('click', () => {
+          this.openModal('modal-info');
+        });
+
+        document.getElementById('btn-how-to-play').addEventListener('click', () => {
+          this.openModal('modal-how-to-play');
+        });
+
+        document.getElementById('btn-objectives').addEventListener('click', () => {
+          this.openModal('modal-objectives');
+        });
+
+        document.getElementById('btn-start-game').addEventListener('click', () => {
+          const nameInput = document.getElementById('player-nickname').value.trim();
+          this.nickname = nameInput || 'Pengembara';
+          this.isPairMode = document.getElementById('pair-mode-checkbox').checked;
+          document.getElementById('stat-mode-badge').innerText = this.isPairMode ? 'Berpasangan 👥' : 'Solo 👤';
+          sound.playClick();
+          this.showScreen('screen-learn');
+        });
+
+        document.getElementById('btn-custom-ratio-tool').addEventListener('click', () => {
+          this.openModal('modal-custom-tool');
+        });
+
+        document.getElementById('btn-proceed-to-map').addEventListener('click', () => {
+          sound.playClick();
+          this.showScreen('screen-map');
+        });
+
+        document.getElementById('btn-back-to-learn').addEventListener('click', () => {
+          sound.playClick();
+          this.showScreen('screen-learn');
+        });
+
+        document.getElementById('btn-view-report-direct').addEventListener('click', () => {
+          sound.playClick();
+          this.showReportScreen();
+        });
+
+        document.getElementById('btn-next-question').addEventListener('click', () => {
+          sound.playClick();
+          this.nextQuestion();
+        });
+
+        document.getElementById('btn-hint').addEventListener('click', () => {
+          this.showHint();
+        });
+
+        document.getElementById('btn-report-continue').addEventListener('click', () => {
+          sound.playClick();
+          this.showScreen('screen-map');
+        });
+
+        document.getElementById('btn-restart-game').addEventListener('click', () => {
+          sound.playClick();
+          this.resetGame();
+        });
+      }
+
+      showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+
+        const statsBar = document.getElementById('stats-bar');
+        if (screenId === 'screen-start') {
+          statsBar.style.display = 'none';
+        } else {
+          statsBar.style.display = 'flex';
+        }
+      }
+
+      openModal(modalId) {
+        sound.playClick();
+        document.getElementById(modalId).classList.add('active');
+      }
+
+      closeModals() {
+        sound.playClick();
+        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+      }
+
+      updateStatsUI() {
+        document.getElementById('stat-stars').innerText = this.stars;
+        document.getElementById('stat-coins').innerText = this.coins;
+        document.getElementById('stat-lives').innerText = '❤️'.repeat(Math.max(0, this.lives));
+      }
+
+      startArea(areaNum) {
+        if (!this.unlockedAreas.includes(areaNum)) {
+          alert('Kawasan ini masih dikunci! Selesaikan kawasan sebelumnya dahulu.');
+          return;
+        }
+
+        sound.playClick();
+        this.currentArea = areaNum;
+        this.currentQuestionIndex = 0;
+
+        // Shuffle & pick 5 questions for this area
+        const pool = [...QUESTION_BANK[areaNum]];
+        pool.sort(() => Math.random() - 0.5);
+        this.areaQuestions = pool.slice(0, 5);
+
+        this.showScreen('screen-gameplay');
+        this.renderQuestion();
+      }
+
+      renderQuestion() {
+        const q = this.areaQuestions[this.currentQuestionIndex];
+        const areaNames = [
+          'Desa Nisbah (Visual)',
+          'Hutan Pemudahan (Langkah Demi Langkah)',
+          'Bandar Nombor (Nombor Tersembunyi)',
+          'Menara Nisbah (Misi Situasi)',
+          'Kastil Master Nisbah (Cabaran Akhir)'
+        ];
+
+        document.getElementById('game-level-title').innerText = `Kawasan ${this.currentArea}: ${areaNames[this.currentArea - 1]}`;
+        document.getElementById('game-question-tracker').innerText = `Soalan ${this.currentQuestionIndex + 1} / ${this.areaQuestions.length}`;
+        document.getElementById('game-question-text').innerText = q.question;
+
+        const visualBox = document.getElementById('game-visual-box');
+        const divisorContainer = document.getElementById('divisor-container');
+        const optionsGrid = document.getElementById('game-options-grid');
+        const feedbackBox = document.getElementById('game-feedback-box');
+        const btnNext = document.getElementById('btn-next-question');
+
+        feedbackBox.className = 'feedback-box';
+        feedbackBox.style.display = 'none';
+        btnNext.style.display = 'none';
+        this.consecutiveMistakes = 0;
+
+        // AREA 2: Step-by-Step Divisor Interactive Mode
+        if (q.type === 'step_simplify') {
+          visualBox.style.display = 'none';
+          divisorContainer.style.display = 'flex';
+          optionsGrid.style.display = 'none';
+
+          this.stepCurrentA = q.startA;
+          this.stepCurrentB = q.startB;
+          this.renderStepDivisorUI(q);
+        } else {
+          // Standard Visual or Option-based Questions
+          divisorContainer.style.display = 'none';
+          optionsGrid.style.display = 'grid';
+
+          // Render Visual Box if items present
+          if (q.itemsA && q.itemsB) {
+            visualBox.style.display = 'flex';
+            visualBox.innerHTML = `
+              <div class="object-group">
+                <span class="group-label">${q.itemsA.label}</span>
+                <div class="items-grid">
+                  ${Array(q.itemsA.count).fill(`<span class="item-icon">${q.itemsA.icon}</span>`).join('')}
+                </div>
+              </div>
+              <div style="font-size:2rem; font-weight:bold; color:#6366f1;">:</div>
+              <div class="object-group">
+                <span class="group-label">${q.itemsB.label}</span>
+                <div class="items-grid">
+                  ${Array(q.itemsB.count).fill(`<span class="item-icon">${q.itemsB.icon}</span>`).join('')}
+                </div>
+              </div>
+            `;
+          } else {
+            visualBox.style.display = 'none';
+          }
+
+          // Render Options
+          optionsGrid.innerHTML = '';
+          q.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => this.checkAnswer(opt, btn, q);
+            optionsGrid.appendChild(btn);
+          });
+        }
+      }
+
+      renderStepDivisorUI(q) {
+        const display = document.getElementById('interactive-ratio-display');
+        const btnList = document.getElementById('divisor-buttons-list');
+        const feedbackBox = document.getElementById('game-feedback-box');
+        const btnNext = document.getElementById('btn-next-question');
+
+        display.innerText = `${this.stepCurrentA} : ${this.stepCurrentB}`;
+        btnList.innerHTML = '';
+
+        // Check if already reached target simplest form
+        if (this.stepCurrentA === q.targetA && this.stepCurrentB === q.targetB) {
+          sound.playCorrect();
+          feedbackBox.className = 'feedback-box correct';
+          feedbackBox.innerHTML = `🌟 <strong>Tahniah!</strong> Nisbah telah dipermudahkan sepenuhnya kepada <strong>${q.targetA} : ${q.targetB}</strong>!`;
+          feedbackBox.style.display = 'block';
+          btnNext.style.display = 'inline-flex';
+
+          this.stars += 3;
+          this.coins += 10;
+          this.stats.totalCorrect++;
+          this.stats.totalAttempted++;
+          this.updateStatsUI();
+          return;
+        }
+
+        // Available Divisor Options
+        const possibleDivisors = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+        possibleDivisors.forEach(d => {
+          const b = document.createElement('button');
+          b.className = 'btn-divisor';
+          b.innerText = `÷${d}`;
+          b.onclick = () => {
+            if (this.stepCurrentA % d === 0 && this.stepCurrentB % d === 0) {
+              sound.playClick();
+              this.stepCurrentA /= d;
+              this.stepCurrentB /= d;
+              this.renderStepDivisorUI(q);
+            } else {
+              sound.playWrong();
+              feedbackBox.className = 'feedback-box wrong';
+              feedbackBox.innerHTML = `⚠️ Nombor <strong>${d}</strong> tidak boleh membahagi kedua-dua ${this.stepCurrentA} dan ${this.stepCurrentB} tanpa baki. Cuba nombor lain!`;
+              feedbackBox.style.display = 'block';
+            }
+          };
+          btnList.appendChild(b);
+        });
+      }
+
+      checkAnswer(selectedOpt, btnElement, q) {
+        const feedbackBox = document.getElementById('game-feedback-box');
+        const btnNext = document.getElementById('btn-next-question');
+        this.stats.totalAttempted++;
+
+        if (selectedOpt === q.correct) {
+          sound.playCorrect();
+          btnElement.classList.add('selected-correct');
+
+          this.stars += 3;
+          this.coins += 10;
+          this.stats.totalCorrect++;
+
+          feedbackBox.className = 'feedback-box correct';
+          feedbackBox.innerHTML = `✅ <strong>Betul!</strong> ${q.explanation}`;
+          feedbackBox.style.display = 'block';
+          btnNext.style.display = 'inline-flex';
+
+          // Disable options
+          document.querySelectorAll('.option-btn').forEach(b => b.onclick = null);
+          this.updateStatsUI();
+
+        } else {
+          sound.playWrong();
+          btnElement.classList.add('selected-wrong');
+          this.consecutiveMistakes++;
+
+          if (this.isPairMode) {
+            feedbackBox.innerHTML = `💬 <strong>Bincang Dengan Rakan:</strong> Belum tepat. ${q.hint}`;
+          } else {
+            feedbackBox.innerHTML = `💡 <strong>Cuba Lagi:</strong> Belum tepat. ${q.hint}`;
+          }
+          feedbackBox.className = 'feedback-box wrong';
+          feedbackBox.style.display = 'block';
+
+          if (!this.stats.difficultQuestions.includes(q.question)) {
+            this.stats.difficultQuestions.push(q.question);
+          }
+
+          if (this.lives > 1) {
+            this.lives--;
+          }
+          this.updateStatsUI();
+        }
+      }
+
+      showHint() {
+        sound.playClick();
+        const q = this.areaQuestions[this.currentQuestionIndex];
+        const feedbackBox = document.getElementById('game-feedback-box');
+        feedbackBox.className = 'feedback-box wrong';
+        feedbackBox.innerHTML = `🔍 <strong>Petunjuk:</strong> ${q.hint}`;
+        feedbackBox.style.display = 'block';
+      }
+
+      nextQuestion() {
+        this.currentQuestionIndex++;
+        if (this.currentQuestionIndex < this.areaQuestions.length) {
+          this.renderQuestion();
+        } else {
+          // Area Completed!
+          this.completeArea();
+        }
+      }
+
+      completeArea() {
+        sound.playVictory();
+        alert(`🎉 Tahniah! Kamu telah menyelesaikan Kawasan ${this.currentArea}!`);
+
+        const badgeMap = {
+          1: '⭐ Penjejak Nisbah',
+          2: '⭐ Wira Pemudah',
+          3: '⭐ Pakar Nisbah',
+          4: '⭐ Pejuang Bandar',
+          5: '🏆 Master Nisbah'
+        };
+
+        if (!this.badges.includes(badgeMap[this.currentArea])) {
+          this.badges.push(badgeMap[this.currentArea]);
+        }
+
+        // Unlock next area
+        if (this.currentArea < 5 && !this.unlockedAreas.includes(this.currentArea + 1)) {
+          this.unlockedAreas.push(this.currentArea + 1);
+        }
+
+        this.updateMapUI();
+        this.showReportScreen();
+      }
+
+      updateMapUI() {
+        for (let i = 1; i <= 5; i++) {
+          const node = document.getElementById(`map-node-${i}`);
+          const badgeSpan = document.getElementById(`badge-area-${i}`);
+
+          if (this.unlockedAreas.includes(i)) {
+            node.className = 'map-node unlocked';
+            if (i === Math.max(...this.unlockedAreas)) {
+              node.classList.add('active-current');
+            }
+            if (this.badges.some(b => b.includes(i === 5 ? 'Master' : ''))) {
+              badgeSpan.innerText = '✅';
+            } else {
+              badgeSpan.innerText = '⭐';
+            }
+          } else {
+            node.className = 'map-node locked';
+            badgeSpan.innerText = '🔒';
+          }
+        }
+      }
+
+      showReportScreen() {
+        this.showScreen('screen-report');
+
+        document.getElementById('report-player-name').innerText = this.nickname;
+        document.getElementById('report-stars').innerText = `${this.stars} ⭐`;
+
+        const accuracy = this.stats.totalAttempted > 0
+          ? Math.round((this.stats.totalCorrect / this.stats.totalAttempted) * 100)
+          : 100;
+        document.getElementById('report-accuracy').innerText = `${accuracy}%`;
+        document.getElementById('report-badge-count').innerText = `${this.badges.length} / 5`;
+
+        // Render Badges
+        const badgesContainer = document.getElementById('badges-container');
+        badgesContainer.innerHTML = '';
+        if (this.badges.length === 0) {
+          badgesContainer.innerHTML = '<span style="color:#64748b; font-size:0.9rem;">Belum ada lencana diraih. Selesaikan kawasan di peta!</span>';
+        } else {
+          this.badges.forEach(b => {
+            const span = document.createElement('span');
+            span.style.cssText = 'background:#fef3c7; border:2px solid #f59e0b; color:#78350f; padding:6px 12px; border-radius:20px; font-weight:bold; font-size:0.9rem;';
+            span.innerText = b;
+            badgesContainer.appendChild(span);
+          });
+        }
+
+        // Teacher Summary Breakdown
+        const teacherText = document.getElementById('teacher-summary-text');
+        teacherText.innerHTML = `
+          Pengembara <strong>${this.nickname}</strong> telah menjawab <strong>${this.stats.totalCorrect}</strong> daripada <strong>${this.stats.totalAttempted}</strong> soalan dengan ketepatan <strong>${accuracy}%</strong>.<br>
+          ${accuracy >= 80 ? '🌟 Murid menunjukkan pemahaman relasional yang sangat kukuh dalam mewakilkan dan mempermudahkan nisbah dua kuantiti.' : '💡 Murid disyorkan membuat sedikit latih tubi tambahan pada bahagian pembahagi sepunya.'}
+        `;
+
+        const diffContainer = document.getElementById('difficult-questions-list');
+        if (this.stats.difficultQuestions.length > 0) {
+          diffContainer.innerHTML = '<strong>Soalan yang memerlukan perhatian/bimbingan:</strong><br>• ' + this.stats.difficultQuestions.slice(0, 3).join('<br>• ');
+        } else {
+          diffContainer.innerHTML = '✨ Tiada masalah dikesan! Murid menjawab soalan dengan lancar.';
+        }
+
+        // Show Certificate if Master Badge Earned or Level 5 Completed
+        const certWrapper = document.getElementById('certificate-wrapper');
+        if (this.badges.includes('🏆 Master Nisbah') || this.unlockedAreas.includes(5)) {
+          certWrapper.style.display = 'block';
+          document.getElementById('cert-player-name').innerText = this.nickname;
+          document.getElementById('cert-date').innerText = new Date().toLocaleDateString('ms-MY');
+        } else {
+          certWrapper.style.display = 'none';
+        }
+      }
+
+      calculateCustomRatio() {
+        sound.playClick();
+        const num1 = parseInt(document.getElementById('custom-num-1').value) || 1;
+        const num2 = parseInt(document.getElementById('custom-num-2').value) || 1;
+
+        const commonDivisor = gcd(num1, num2);
+        const simpleA = num1 / commonDivisor;
+        const simpleB = num2 / commonDivisor;
+
+        const resultBox = document.getElementById('custom-ratio-result');
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = `
+          <div style="font-size:1.1rem; color:#0369a1; font-weight:bold; margin-bottom:6px;">
+            Nisbah Asal: ${num1} : ${num2}
+          </div>
+          <div style="font-size:1rem; color:#334155;">
+            Pembahagi Sepunya Terbesar (FSTB) = <strong>${commonDivisor}</strong>
+          </div>
+          <div style="font-size:1.3rem; color:#059669; font-weight:bold; margin-top:8px;">
+            Nisbah Termudah = ${simpleA} : ${simpleB}
+          </div>
+        `;
+      }
+
+      resetGame() {
+        this.stars = 0;
+        this.coins = 0;
+        this.lives = 3;
+        this.unlockedAreas = [1];
+        this.badges = [];
+        this.stats = { totalAttempted: 0, totalCorrect: 0, difficultQuestions: [] };
+        this.updateStatsUI();
+        this.updateMapUI();
+        this.showScreen('screen-start');
+      }
+    }
+
+    /* INITIALIZE GAME ENGINE ON LOAD */
+    const game = new GameEngine();
+    window.addEventListener('DOMContentLoaded', () => {
+      game.init();
+    });
+  </script>
+</body>
+</html>
