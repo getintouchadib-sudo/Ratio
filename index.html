@@ -407,22 +407,28 @@
     .modal-title { font-size: 1.4rem; color: #312e81; font-weight: bold; }
     .close-modal { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #64748b; }
 
-    /* COLOURFUL POSTER CERTIFICATE STYLES */
+    /* BALANCED A4 LANDSCAPE CERTIFICATE POSTER STYLES */
     #certificate {
       background: linear-gradient(135deg, #fffdf0 0%, #fef3c7 50%, #fde68a 100%);
-      border: 14px double #f59e0b;
-      border-radius: 24px;
-      padding: 36px;
+      border: 12px double #f59e0b;
+      border-radius: 20px;
+      padding: 24px 32px;
       text-align: center;
       color: #451a03;
-      margin-top: 15px;
-      box-shadow: 0 15px 30px rgba(245, 158, 11, 0.25);
+      margin: 15px auto 0 auto;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
       position: relative;
+      width: 100%;
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .cert-title { font-size: 2.5rem; font-weight: bold; color: #b45309; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 3px; }
-    .cert-subtitle { font-size: 1.2rem; color: #d97706; font-weight: bold; margin-bottom: 16px; letter-spacing: 1px; }
-    .cert-name { font-size: 2.6rem; font-weight: bold; color: #78350f; margin: 14px 0; border-bottom: 4px solid #f59e0b; display: inline-block; padding: 0 28px; }
+    .cert-title { font-size: 2.1rem; font-weight: bold; color: #b45309; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 2px; }
+    .cert-subtitle { font-size: 1.05rem; color: #d97706; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px; }
+    .cert-name { font-size: 2.2rem; font-weight: bold; color: #78350f; margin: 8px 0; border-bottom: 3px solid #f59e0b; display: inline-block; padding: 0 24px; }
 
     /* STAGE PERFORMANCE CARD STYLES FOR REPORT */
     .stage-report-card {
@@ -463,13 +469,24 @@
       transition: width 0.4s ease;
     }
 
-    /* A4 LANDSCAPE PRINT CSS SETUP */
+    /* PERFECT A4 LANDSCAPE PRINT CSS SETUP */
     @page {
       size: A4 landscape;
       margin: 0;
     }
 
     @media print {
+      html, body {
+        width: 297mm !important;
+        height: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden !important;
+      }
       body * {
         visibility: hidden !important;
       }
@@ -477,24 +494,28 @@
         visibility: visible !important;
       }
       #certificate {
-        position: absolute !important;
-        left: 0 !important;
+        position: fixed !important;
         top: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 100vh !important;
-        margin: 0 !important;
-        padding: 40px !important;
-        border: 16px double #f59e0b !important;
-        border-radius: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 285mm !important;
+        height: 192mm !important;
+        margin: auto !important;
+        padding: 24px 36px !important;
+        border: 12px double #f59e0b !important;
+        border-radius: 16px !important;
         box-shadow: none !important;
         background: linear-gradient(135deg, #fffdf0 0%, #fef3c7 100%) !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
         page-break-after: avoid !important;
-        page-break-before: avoid !important;
+        break-after: avoid !important;
       }
       .no-print {
         display: none !important;
@@ -812,29 +833,31 @@
           <button class="btn btn-accent btn-large" onclick="game.showCertificateSection()">🏆 VIEW CERTIFICATE</button>
         </div>
 
-        <!-- COLOURFUL POSTER CERTIFICATE ELEMENT -->
+        <!-- PERFECTLY BALANCED COLOURFUL POSTER CERTIFICATE ELEMENT -->
         <div id="certificate-wrapper" style="display: none;">
           <div id="certificate">
-            <div style="font-size: 3.5rem; margin-bottom: 4px;">🏆✨</div>
+            <div style="font-size: 2.8rem; margin-bottom: 2px;">🏆✨</div>
             <div class="cert-title">CERTIFICATE OF ACHIEVEMENT</div>
             <div class="cert-subtitle">RATIO MASTER AWARD</div>
-            <p style="font-size: 1.1rem; color: #78350f;">This certificate is proudly awarded to</p>
+
+            <p style="font-size: 1.05rem; color: #78350f; margin-top: 4px;">This certificate is proudly awarded to</p>
             <div class="cert-name" id="cert-player-name">Explorer</div>
-            <p style="font-size: 1.1rem; line-height: 1.5; margin-top: 10px; color: #451a03; max-width: 600px;">
+
+            <p style="font-size: 1rem; line-height: 1.4; color: #451a03; max-width: 620px; margin-top: 6px;">
               For successfully completing <strong>RATIO QUEST: THE MYSTERY OF NUMBER CITY</strong> and mastering DSKP Learning Standard 7.2.1!
             </p>
 
-            <div style="margin-top: 16px; background: rgba(255,255,255,0.85); border: 2px solid #f59e0b; padding: 12px 24px; border-radius: 12px; display: inline-flex; gap: 20px; font-weight: bold; color: #78350f;">
+            <div style="margin-top: 14px; background: rgba(255,255,255,0.85); border: 2px solid #f59e0b; padding: 8px 20px; border-radius: 12px; display: inline-flex; gap: 20px; font-weight: bold; color: #78350f; font-size: 0.95rem;">
               <div>Final Score: <span id="cert-score" style="color:#d97706;">0 / 25</span></div>
               <div>Average Performance: <span id="cert-avg" style="color:#10b981;">0%</span></div>
               <div>Stages Completed: <span id="cert-stages" style="color:#6366f1;">0 / 5</span></div>
             </div>
 
-            <div style="margin-top: 20px; font-size: 0.9rem; color: #78350f;">
+            <div style="margin-top: 14px; font-size: 0.85rem; color: #78350f;">
               Date: <span id="cert-date"></span> | Awarded by: Number City Ratio Quest
             </div>
 
-            <div class="no-print" style="margin-top: 20px;">
+            <div class="no-print" style="margin-top: 16px;">
               <button class="btn btn-primary btn-large" onclick="game.printCertificate()">🖨 PRINT CERTIFICATE</button>
             </div>
           </div>
