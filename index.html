@@ -463,6 +463,40 @@
       transition: width 0.4s ease;
     }
 
+    /* PRINT STYLES FOR A4 CERTIFICATE */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      header, .controls-bar, .stats-bar, #screen-start, #screen-explore, #screen-learn, #screen-practise, #screen-map, #screen-gameplay, .modal-overlay, #screen-report > div > *:not(#certificate-wrapper), #screen-report > h2, #screen-report > p, #screen-report > div:nth-child(2), #screen-report > div:nth-child(3), #screen-report > div:nth-child(4), #screen-report > div:last-child {
+        display: none !important;
+      }
+      #app-container {
+        border: none !important;
+        box-shadow: none !important;
+        background: white !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      #screen-report {
+        display: block !important;
+        padding: 0 !important;
+      }
+      #certificate-wrapper {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .certificate-card {
+        border: 10px double #f59e0b !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin: 0 auto !important;
+        max-width: 90% !important;
+      }
+    }
+
     /* RESPONSIVE DESIGN ADJUSTMENTS */
     @media (max-width: 640px) {
       .hero-title { font-size: 1.5rem; }
@@ -539,7 +573,6 @@
       </div>
 
       <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-        <button class="btn btn-accent" onclick="game.showReportScreen()">📊 PERFORMANCE REPORT</button>
         <button class="btn btn-outline" id="btn-how-to-play">❓ How To Play</button>
         <button class="btn btn-outline" id="btn-objectives">🎯 Learning Objectives (DSKP)</button>
       </div>
@@ -631,7 +664,7 @@
       </div>
     </div>
 
-    <!-- 5. GAME MAP SCREEN -->
+    <!-- 5. GAME MAP SCREEN (WITH INSIDE GAME PERFORMANCE REPORT BUTTON) -->
     <div id="screen-map" class="screen">
       <div class="map-container">
         <h2 class="map-title">🗺️ Number City Quest Map</h2>
@@ -667,9 +700,9 @@
           </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; margin-top: 16px;">
+        <div style="display: flex; justify-content: space-between; margin-top: 16px; flex-wrap: wrap; gap: 10px;">
           <button class="btn btn-outline" onclick="game.showScreen('screen-start')">🏠 Main Home</button>
-          <button class="btn btn-accent" id="btn-view-report-direct">📊 Performance Report</button>
+          <button class="btn btn-accent" id="btn-view-report-direct" onclick="game.showReportScreen()">📊 PERFORMANCE REPORT</button>
         </div>
       </div>
     </div>
@@ -702,8 +735,9 @@
           <div id="feedback-content">Correct! Great job!</div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px;">
           <button class="btn btn-outline" id="btn-hint" style="display: none; padding: 8px 16px; font-size: 0.95rem;">💡 SHOW HINT</button>
+          <button class="btn btn-accent" style="padding: 8px 16px; font-size: 0.95rem;" onclick="game.showReportScreen()">📊 PERFORMANCE REPORT</button>
           <button class="btn btn-primary" id="btn-next-question" style="display: none;">NEXT QUESTION ➡️</button>
         </div>
       </div>
@@ -724,7 +758,7 @@
       </div>
     </div>
 
-    <!-- 8. DEDICATED INTERACTIVE PERFORMANCE REPORT SCREEN -->
+    <!-- 8. DEDICATED INTERACTIVE PERFORMANCE REPORT SCREEN INSIDE GAME -->
     <div id="screen-report" class="screen">
       <div class="game-card" style="max-width: 820px;">
         <h2 style="text-align: center; color: #312e81; font-size: 1.8rem; margin-bottom: 4px;">📊 Interactive Performance Report</h2>
@@ -747,7 +781,7 @@
             <div style="font-size: 1.4rem; font-weight: bold; color: #0284c7;" id="report-overall-score">0%</div>
           </div>
           <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 12px; border-radius: 14px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #92400e; font-weight: bold;">AVERAGE SCORE</div>
+            <div style="font-size: 0.8rem; color: #92400e; font-weight: bold;">AVERAGE PERFORMANCE</div>
             <div style="font-size: 1.4rem; font-weight: bold; color: #d97706;" id="report-average-score">0%</div>
           </div>
         </div>
@@ -769,7 +803,12 @@
           </div>
         </div>
 
-        <!-- COLOURFUL CERTIFICATE CONTAINER (IF FINAL STAGE COMPLETED) -->
+        <!-- VIEW CERTIFICATE BUTTON -->
+        <div style="text-align: center; margin-bottom: 16px;">
+          <button class="btn btn-accent btn-large" onclick="game.showCertificateSection()">🏆 VIEW CERTIFICATE</button>
+        </div>
+
+        <!-- COLOURFUL CERTIFICATE CONTAINER -->
         <div id="certificate-wrapper" style="display: none;">
           <div class="certificate-card">
             <div style="font-size: 3rem; margin-bottom: 4px;">🏆✨</div>
@@ -778,21 +817,28 @@
             <p style="font-size: 1rem;">This certificate is proudly awarded to</p>
             <div class="cert-name" id="cert-player-name">Explorer</div>
             <p style="font-size: 1rem; line-height: 1.5; margin-top: 8px;">
-              For successfully completing <strong>Ratio Quest: The Mystery of Number City</strong> and mastering DSKP Learning Standard 7.2.1!
+              For successfully completing <strong>RATIO QUEST: THE MYSTERY OF NUMBER CITY</strong> and mastering DSKP Learning Standard 7.2.1!
             </p>
-            <div style="margin-top: 18px; font-size: 0.85rem; color: #78350f;">
+            <div style="margin-top: 14px; background: rgba(255,255,255,0.7); padding: 10px; border-radius: 10px; display: inline-block;">
+              <strong>Final Score:</strong> <span id="cert-score">0</span> |
+              <strong>Average Performance:</strong> <span id="cert-avg">0%</span> |
+              <strong>Stages Completed:</strong> <span id="cert-stages">0 / 5</span>
+            </div>
+            <div style="margin-top: 14px; font-size: 0.85rem; color: #78350f;">
               Date: <span id="cert-date"></span> | Awarded by: Number City Ratio Quest
+            </div>
+            <div style="margin-top: 16px;">
+              <button class="btn btn-primary" onclick="window.print()">🖨 PRINT CERTIFICATE</button>
             </div>
           </div>
         </div>
 
-        <!-- NAVIGATION BUTTONS -->
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
+        <!-- REPORT NAVIGATION BUTTONS -->
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
           <button class="btn btn-outline" onclick="game.showScreen('screen-start')">🏠 HOME</button>
-          <button class="btn btn-primary" onclick="game.openGameSection()">🎮 PLAY GAME</button>
+          <button class="btn btn-primary" onclick="game.openGameSection()">🎮 BACK TO GAME</button>
           <button class="btn btn-secondary" onclick="game.openLearnSection()">📚 LEARN</button>
           <button class="btn btn-accent" onclick="game.openPractiseSection()">✏️ PRACTISE</button>
-          <button class="btn btn-outline" onclick="window.print()">🖨️ PRINT REPORT</button>
         </div>
       </div>
     </div>
@@ -808,11 +854,11 @@
       </div>
       <div style="line-height: 1.6; color: #334155; font-size: 0.95rem;">
         <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <li><strong>Main Home:</strong> Enter your nickname and select any of the 4 learning sections (Explore, Learn, Practise, Game) or view your Performance Report.</li>
+          <li><strong>Main Home:</strong> Enter your nickname and select any of the 4 learning sections (Explore, Learn, Practise, Game).</li>
           <li><strong>Explore:</strong> Experiment with object quantities to see visual ratio transformations.</li>
           <li><strong>Learn:</strong> Follow step-by-step demonstrations on simplifying ratios.</li>
           <li><strong>Practise:</strong> Try unlimited practice questions with full step-by-step explanations.</li>
-          <li><strong>Game:</strong> Conquer 5 stages with 3 lives ❤️ per stage. 1 wrong answer = -1 life.</li>
+          <li><strong>Game:</strong> Conquer 5 stages with 3 lives ❤️ per stage. 1 wrong answer = -1 life. View Performance Report during game!</li>
         </ol>
       </div>
     </div>
@@ -1391,10 +1437,11 @@
         }
       }
 
-      /* DEDICATED INTERACTIVE PERFORMANCE REPORT SCREEN WITH REAL PLAYER DATA */
+      /* DEDICATED INTERACTIVE PERFORMANCE REPORT SCREEN INSIDE GAME */
       showReportScreen() {
         this.showScreen('screen-report');
         document.getElementById('report-player-name').innerText = this.nickname;
+        document.getElementById('certificate-wrapper').style.display = 'none'; // Hide cert initially unless requested
 
         const stageNames = [
           'Stage 1 – Ratio Village',
@@ -1498,16 +1545,40 @@
           statusBadge.innerText = '🌱 KEEP LEARNING';
           statusDesc.innerText = 'Don\'t give up! Revisit Explore and Learn to build confidence.';
         }
+      }
 
-        // CERTIFICATE DISCLOSURE
+      showCertificateSection() {
+        sound.playVictory();
         const certWrapper = document.getElementById('certificate-wrapper');
-        if (this.badges.includes('🏆 Ratio Master') || this.unlockedAreas.includes(5)) {
-          certWrapper.style.display = 'block';
-          document.getElementById('cert-player-name').innerText = this.nickname;
-          document.getElementById('cert-date').innerText = new Date().toLocaleDateString('en-US');
-        } else {
-          certWrapper.style.display = 'none';
+        certWrapper.style.display = 'block';
+
+        let totalCorrectAll = 0;
+        let totalQuestionsAll = 0;
+        let completedStagePcts = [];
+        let completedCount = 0;
+
+        for (let s = 1; s <= 5; s++) {
+          const st = this.stageStats[s];
+          if (st.completed || st.total > 0) {
+            totalCorrectAll += st.correct;
+            totalQuestionsAll += st.total;
+            const pct = st.total > 0 ? Math.round((st.correct / st.total) * 100) : 0;
+            completedStagePcts.push(pct);
+            if (st.completed) completedCount++;
+          }
         }
+
+        const avgPct = completedStagePcts.length > 0
+          ? Math.round(completedStagePcts.reduce((a, b) => a + b, 0) / completedStagePcts.length)
+          : 0;
+
+        document.getElementById('cert-player-name').innerText = this.nickname;
+        document.getElementById('cert-score').innerText = `${totalCorrectAll} / ${totalQuestionsAll}`;
+        document.getElementById('cert-avg').innerText = `${avgPct}%`;
+        document.getElementById('cert-stages').innerText = `${completedCount} / 5`;
+        document.getElementById('cert-date').innerText = new Date().toLocaleDateString('en-US');
+
+        certWrapper.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
